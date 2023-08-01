@@ -14,12 +14,16 @@ import { DemoFlexyModule } from './demo-flexy-module'
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ComponentsModule } from './components/components.module';
 import { ShophomeComponent } from './shophome/shophome.component';
+import { ProductComponent } from './shophome/product/product.component';
+import { CardComponent } from './shophome/components/card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FullComponent,
-    ShophomeComponent
+    ShophomeComponent,
+    ProductComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

@@ -15,7 +15,9 @@ export class CardsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+/**
+ * Product information
+ */
   cards: cards [] = [
     {
       image: "assets/images/u2.webp",
