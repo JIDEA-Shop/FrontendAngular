@@ -16,6 +16,7 @@ import { ComponentsModule } from './components/components.module';
 import { ShophomeComponent } from './shophome/shophome.component';
 import { ProductComponent } from './shophome/product/product.component';
 import { CardComponent } from './shophome/components/card/card.component';
+import { PromotionBannerComponent } from './shophome/components/promotion-banner/promotion-banner.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CardComponent } from './shophome/components/card/card.component';
     FullComponent,
     ShophomeComponent,
     ProductComponent,
-    CardComponent
+    CardComponent,
+    PromotionBannerComponent
   ],
   imports: [
     BrowserModule,
