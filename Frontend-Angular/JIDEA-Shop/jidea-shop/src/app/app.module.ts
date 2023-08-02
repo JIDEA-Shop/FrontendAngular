@@ -30,8 +30,6 @@ import { ShophomeModule } from './shophome/shophome.module';
   declarations: [
     AppComponent,
     FullComponent,
-
-    
     SignupPageComponent,
     SignupFormComponent,
     SigninFormComponent,
@@ -49,9 +47,7 @@ import { ShophomeModule } from './shophome/shophome.module';
     ShophomeModule,
     ComponentsModule,
     FormsModule,
-
-    FontAwesomeModule
-
+    FontAwesomeModule,
     HttpClientModule
 
   ],

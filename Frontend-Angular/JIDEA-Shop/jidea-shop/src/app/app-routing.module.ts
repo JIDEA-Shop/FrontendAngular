@@ -32,10 +32,6 @@ const routes: Routes = [
     component:FullComponent,
     children: [
       {path:"", redirectTo:"/shop", pathMatch:"full"},
-      {path:"signup", component:SignupPageComponent},
-      {path:"signin", component:SigninPageComponent},
-      {path:"cart", component:CartPageComponent},
-
       {
         path:"shop",
         component:ShophomeComponent,
@@ -45,11 +41,13 @@ const routes: Routes = [
           { path: "", component:CardComponent},
         ]
       },
-
+      
       {path:"home", component:DashboardComponent},
     ]
   },
-
+  {path:"signup", component:SignupPageComponent},
+  {path:"signin", component:SigninPageComponent},
+  {path:"cart", component:CartPageComponent},
   {path:"", redirectTo:"", pathMatch:"full"},
   {path:"**", redirectTo: "",pathMatch: "full"}
 ];

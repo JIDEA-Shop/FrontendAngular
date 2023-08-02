@@ -27,8 +27,6 @@ export class FullComponent implements OnInit{
   public search:boolean = false;
   cartIcon = faCartShopping;
   userIcon = faUserCircle;
-  search: boolean = false;
-
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
