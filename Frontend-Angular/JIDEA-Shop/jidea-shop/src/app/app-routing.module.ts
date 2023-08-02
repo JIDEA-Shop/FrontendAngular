@@ -19,8 +19,12 @@ import { ProductComponent } from './dashboard/dashboard-components/product/produ
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FullComponent } from './layouts/full/full.component';
 import { ShophomeComponent } from './shophome/shophome.component';
+
+import { SignupPageComponent } from './signup-page/signup-page.component';
+import { SigninPageComponent } from './signin-page/signin-page.component';
+import { CartPageComponent } from './cart-page/cart-page.component';
 import { CardComponent } from './shophome/components/card/card.component';
-import { PromotionBannerComponent } from './shophome/components/promotion-banner/promotion-banner.component';
+
 
 const routes: Routes = [
   {
@@ -28,6 +32,10 @@ const routes: Routes = [
     component:FullComponent,
     children: [
       {path:"", redirectTo:"/shop", pathMatch:"full"},
+      {path:"signup", component:SignupPageComponent},
+      {path:"signin", component:SigninPageComponent},
+      {path:"cart", component:CartPageComponent},
+
       {
         path:"shop",
         component:ShophomeComponent,
@@ -37,6 +45,7 @@ const routes: Routes = [
           { path: "", component:CardComponent},
         ]
       },
+
       {path:"home", component:DashboardComponent},
     ]
   },
