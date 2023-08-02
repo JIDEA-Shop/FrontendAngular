@@ -16,6 +16,13 @@ import { ComponentsModule } from './components/components.module';
 import { ShophomeComponent } from './shophome/shophome.component';
 import { ProductComponent } from './shophome/product/product.component';
 import { CardComponent } from './shophome/components/card/card.component';
+import { SignupPageComponent } from './signup-page/signup-page.component';
+import { SignupFormComponent } from './components/signup-form/signup-form.component';
+import { SigninFormComponent } from './components/signin-form/signin-form.component';
+import { SigninPageComponent } from './signin-page/signin-page.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CartPageComponent } from './cart-page/cart-page.component';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +30,12 @@ import { CardComponent } from './shophome/components/card/card.component';
     FullComponent,
     ShophomeComponent,
     ProductComponent,
-    CardComponent
+    CardComponent,
+    SignupPageComponent,
+    SignupFormComponent,
+    SigninFormComponent,
+    SigninPageComponent,
+    CartPageComponent 
   ],
   imports: [
     BrowserModule,
@@ -33,7 +45,8 @@ import { CardComponent } from './shophome/components/card/card.component';
     DemoFlexyModule,
     DashboardModule,
     ComponentsModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,27 @@
+<!-- Form Layout -->
+<div class="card">
+  <div class="card-body">
+    <h4 class="mb-32">Sign in</h4>
+    <form>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" value="Nirav Joshi" placeholder="Enter your Username">
+      </mat-form-field>
+
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" placeholder="Enter your password">
+      </mat-form-field>
+      <div class="d-flex justify-content-center">
+       <button mat-raised-button class="w-100 me-8 mb-8 mt-20" color="accent" (click)="onBack()">Log in</button>
+      </div>
+    </form>
+    <div class="d-flex justify-content-center">
+      <p class=" mt-20">Don't have an account yet?<a class = "pointer-button" (click)="goToSignup()"><u style="color: blue;">Sign up</u></a></p>
+    </div>
+  </div>
+</div>
+
+
+
+

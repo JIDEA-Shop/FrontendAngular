@@ -19,6 +19,9 @@ import { ProductComponent } from './dashboard/dashboard-components/product/produ
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FullComponent } from './layouts/full/full.component';
 import { ShophomeComponent } from './shophome/shophome.component';
+import { SignupPageComponent } from './signup-page/signup-page.component';
+import { SigninPageComponent } from './signin-page/signin-page.component';
+import { CartPageComponent } from './cart-page/cart-page.component';
 
 const routes: Routes = [
   {
@@ -27,6 +30,10 @@ const routes: Routes = [
     children: [
       {path:"", redirectTo:"/shop", pathMatch:"full"},
       {path:"shop", component:ShophomeComponent},
+      {path:"", redirectTo:"/signin", pathMatch:"full"},
+      {path:"signup", component:SignupPageComponent},
+      {path:"signin", component:SigninPageComponent},
+      {path:"cart", component:CartPageComponent},
       {path:"home", component:DashboardComponent},
       {path:"alerts", component:AlertsComponent},
       {path:"forms", component:FormsComponent},
