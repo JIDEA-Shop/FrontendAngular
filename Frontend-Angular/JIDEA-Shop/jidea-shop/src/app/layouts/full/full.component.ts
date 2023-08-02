@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { ProductService } from 'src/app/services/product.service';
+import { Category } from 'src/app/common/classes/category';
 
 interface sidebarMenu {
   link: string;
@@ -14,7 +16,7 @@ interface sidebarMenu {
   templateUrl: './full.component.html',
   styleUrls: ['./full.component.scss']
 })
-export class FullComponent {
+export class FullComponent implements OnInit{
 
   search: boolean = false;
 
@@ -23,22 +25,35 @@ export class FullComponent {
       map(result => result.matches),
       shareReplay()
     );
-
-  constructor(private breakpointObserver: BreakpointObserver) { }
+    categories:Category[]=[];
+  constructor(private breakpointObserver: BreakpointObserver,private productService:ProductService) { }
+  ngOnInit(): void {
+    this.getCategories();
+  }
 
   routerActive: string = "activelink";
-
+  
   sidebarMenu: sidebarMenu[] = [
-    {
-      link:"/shop",
-      icon:"home",
-      menu:"SHOP HOME"
-    },
     {
       link: "/home",
       icon: "home",
       menu: "Dashboard",
     },
+    {
+      link:"/shop",
+      icon:"home",
+      menu:"SHOP HOME"
+    },
   ]
-
+  getCategories() {
+    this.productService.getCategories().subscribe
+    (
+      data => {
+        console.log(data._embedded.productCategory);
+        this.categories = data._embedded.productCategory;
+      }
+    )
+  }
 }
+
+

@@ -1,9 +1,6 @@
 import { Component,OnInit } from '@angular/core';
-
-interface cards {
-  image: string;
-  btn: string;
-}
+import { Product } from 'src/app/common/classes/product';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-shop-card',
@@ -11,55 +8,25 @@ interface cards {
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-
-  constructor() { }
+  private page = 1;
+  private pageSize = 10;
+  constructor(private productService:ProductService) { }
 
   ngOnInit(): void {
+    this.listProducts();
   }
-/**
- * Card Information: Will be replace with Products
- */
-  cards: cards [] = [
-    {
-      image: "assets/images/u2.webp",
-      btn: "warn",
-    },
-    {
-      image: "assets/images/u3.webp",
-      btn: "primary",
-    },
-    {
-      image: "assets/images/u4.webp",
-      btn: "accent",
-    },
-    {
-      image: "assets/images/u2.webp",
-      btn: "warn",
-    },
-    {
-      image: "assets/images/u2.webp",
-      btn: "warn",
-    },
-    {
-      image: "assets/images/u2.webp",
-      btn: "warn",
-    },
-    {
-      image: "assets/images/u2.webp",
-      btn: "warn",
-    },
-    {
-      image: "assets/images/u2.webp",
-      btn: "warn",
-    },
-    {
-      image: "assets/images/u2.webp",
-      btn: "warn",
-    },
-    {
-      image: "assets/images/u2.webp",
-      btn: "warn",
-    },
-  ]
-
+  cards: Product [] = [];
+  listProducts(){
+    /**
+     * pagination is not handled in .html
+     * page, and size currently hardcode.
+     */
+    this.productService.getProducts().subscribe(
+      x => {
+        console.log(x);
+        this.cards = x._embedded.products;
+        console.log(this.cards);
+      }
+    )
+  }
 }

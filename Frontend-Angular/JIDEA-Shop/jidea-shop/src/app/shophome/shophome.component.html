@@ -1,3 +1,44 @@
-<app-promotion-banner></app-promotion-banner>
+<!-- ToolBar-->
+<mat-toolbar>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span><h4>SHOP FOR HOME</h4></span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>add_shopping_cart</mat-icon>
+      </button>
+  </mat-toolbar>
+<!-- Tabs -->
+<div class="row">
+    <!-- Card column -->
+    <div class="col-12">
+      <mat-card>
+        <mat-card-content>
+          <h4 class="mb-32">Events</h4>
+          <mat-tab-group mat-stretch-tabs="false">
+            <mat-tab label="Promotions">
+              <mat-card-content>
+                <app-promotion-banner></app-promotion-banner>
+                </mat-card-content>
+            </mat-tab>
+            <mat-tab label="Recommended For You">
+              <mat-card-content>
+                <app-shop-product></app-shop-product>
+            </mat-card-content>
+            </mat-tab>
+            <mat-tab label="Popular Products">
+                <mat-card-content>
+                  <app-shop-card></app-shop-card>
+              </mat-card-content>
+              </mat-tab>
+          </mat-tab-group>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
 <app-shop-card></app-shop-card>
-<app-shop-product></app-shop-product>

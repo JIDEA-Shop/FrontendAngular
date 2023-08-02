@@ -62,7 +62,7 @@
           <div class="d-flex align-items-center">
             <img src="assets/images/user2.webp" class="rounded-circle" alt="">
             <span class="fw-light ms-8 text-secondary">Hi,</span>
-            <span class="fw-bold ms-8">Julia</span>
+            <span class="fw-bold ms-8">Account</span>
             <i-feather name="chevron-down" class="feather-base"></i-feather>
           </div>
         </button>
@@ -86,6 +86,15 @@
 
     <!-- Content -->
     <div class="body-wrapper">
+      <mat-card>
+        <mat-card-content>
+          <mat-card-title>Categories</mat-card-title>
+          <mat-chip-listbox aria-label="Category Selection">
+            <mat-chip-option *ngFor = "let category of categories">{{category.categoryName}}</mat-chip-option>
+          </mat-chip-listbox>
+      
+        </mat-card-content>
+      </mat-card>
       <div class="page-wrapper">
         <router-outlet></router-outlet>
       </div>

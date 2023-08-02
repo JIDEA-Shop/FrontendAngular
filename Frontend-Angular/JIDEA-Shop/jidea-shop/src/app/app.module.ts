@@ -13,19 +13,13 @@ import { DemoFlexyModule } from './demo-flexy-module'
 // Modules
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ComponentsModule } from './components/components.module';
-import { ShophomeComponent } from './shophome/shophome.component';
-import { ProductComponent } from './shophome/product/product.component';
-import { CardComponent } from './shophome/components/card/card.component';
-import { PromotionBannerComponent } from './shophome/components/promotion-banner/promotion-banner.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ShophomeModule } from './shophome/shophome.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     FullComponent,
-    ShophomeComponent,
-    ProductComponent,
-    CardComponent,
-    PromotionBannerComponent
   ],
   imports: [
     BrowserModule,
@@ -34,8 +28,10 @@ import { PromotionBannerComponent } from './shophome/components/promotion-banner
     FeatherModule.pick(allIcons),
     DemoFlexyModule,
     DashboardModule,
+    ShophomeModule,
     ComponentsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

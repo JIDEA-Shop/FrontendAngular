@@ -19,14 +19,19 @@ import { ProductComponent } from './dashboard/dashboard-components/product/produ
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FullComponent } from './layouts/full/full.component';
 import { ShophomeComponent } from './shophome/shophome.component';
+import { CardComponent } from './shophome/components/card/card.component';
+import { PromotionBannerComponent } from './shophome/components/promotion-banner/promotion-banner.component';
 
 const routes: Routes = [
   {
     path:"",
     component:FullComponent,
     children: [
-      {path:"", redirectTo:"/shop", pathMatch:"full"},
-      {path:"shop", component:ShophomeComponent},
+      {path:"", redirectTo:"/home", pathMatch:"full"},
+      {
+        path:"shop",
+        component:ShophomeComponent,
+      },
       {path:"home", component:DashboardComponent},
       {path:"alerts", component:AlertsComponent},
       {path:"forms", component:FormsComponent},
@@ -48,7 +53,6 @@ const routes: Routes = [
   },
 
   {path:"", redirectTo:"/shop", pathMatch:"full"},
-  {path:"**", redirectTo:"/shop", pathMatch:"full"},
 ];
 
 @NgModule({
