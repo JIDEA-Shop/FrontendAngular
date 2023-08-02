@@ -13,9 +13,7 @@ import { DemoFlexyModule } from './demo-flexy-module'
 // Modules
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ComponentsModule } from './components/components.module';
-import { ShophomeComponent } from './shophome/shophome.component';
-import { ProductComponent } from './shophome/product/product.component';
-import { CardComponent } from './shophome/components/card/card.component';
+
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { SignupFormComponent } from './components/signup-form/signup-form.component';
 import { SigninFormComponent } from './components/signin-form/signin-form.component';
@@ -24,18 +22,22 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CartPageComponent } from './cart-page/cart-page.component';
 
 
+import { HttpClientModule } from '@angular/common/http';
+import { ShophomeModule } from './shophome/shophome.module';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     FullComponent,
-    ShophomeComponent,
-    ProductComponent,
-    CardComponent,
+
+    
     SignupPageComponent,
     SignupFormComponent,
     SigninFormComponent,
     SigninPageComponent,
     CartPageComponent 
+
   ],
   imports: [
     BrowserModule,
@@ -44,9 +46,14 @@ import { CartPageComponent } from './cart-page/cart-page.component';
     FeatherModule.pick(allIcons),
     DemoFlexyModule,
     DashboardModule,
+    ShophomeModule,
     ComponentsModule,
     FormsModule,
+
     FontAwesomeModule
+
+    HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -62,7 +62,7 @@
         <button mat-button class="fs-16 pt-4 pb-4 ps-8 pe-8 text-light-muted d-flex align-items-center" [matMenuTriggerFor]="menu">
           <div class="d-flex align-items-center">
             <span class="fw-light ms-8 text-secondary">Hi,</span>
-            <span class="fw-bold ms-8">Julia</span>
+            <span class="fw-bold ms-8">Account</span>
             <i-feather name="chevron-down" class="feather-base"></i-feather>
             <fa-icon [icon]="userIcon" class="fa-xl me-15"></fa-icon>
             <!-- <img src="assets/images/user2.webp" class="rounded-circle" alt=""> -->
@@ -89,6 +89,7 @@
 
     <!-- Content -->
     <div class="body-wrapper">
+      <app-categories></app-categories>
       <div class="page-wrapper">
         <router-outlet></router-outlet>
       </div>
@@ -107,7 +108,7 @@
 <div *ngIf="search" class="search-section d-flex align-items-center">
   <mat-form-field class="w-100" color="primary" >
     <mat-label class="fs-16">Search Here</mat-label>
-    <input matInput>
+    <input matInput type = "search" #myInput (keyup.enter)="doSearch(myInput.value)">
   </mat-form-field>
   <button mat-icon-button (click)="search=!search">
     <i-feather name="x-circle" class="mt-n3 text-light-muted feather-base text-dark"></i-feather>

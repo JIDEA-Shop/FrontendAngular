@@ -1,9 +1,7 @@
 import { Component,OnInit } from '@angular/core';
-
-interface cards {
-  image: string;
-  btn: string;
-}
+import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/common/classes/product';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-shop-card',
@@ -11,55 +9,63 @@ interface cards {
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-
-  constructor() { }
+  private page = 1;
+  private pageSize = 10;
+  searchMode:boolean = false;
+  currentCategory:number = 1;
+  previousCategory:number = this.currentCategory;
+  totalElement:number = 1;
+  constructor(private productService:ProductService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(
+      () => this.listProducts()
+    )
   }
-/**
- * Card Information: Will be replace with Products
- */
-  cards: cards [] = [
+  cards: Product [] = [];
+  listProducts(){
+    this.searchMode = this.route.snapshot.paramMap.has(`keyword`);
+    if(this.searchMode)
     {
-      image: "assets/images/u2.webp",
-      btn: "warn",
-    },
+      this.handleSearchList(String(this.route.snapshot.paramMap.get(`keyword`)));
+    }
+    this.handleProductList();
+  }
+  handleSearchList(keyword:string) {
+    this.productService.getSearchProduct(this.page,this.pageSize,keyword).subscribe(
+      x => {
+        console.log(x);
+        this.cards = x._embedded.products;
+        console.log(this.cards);
+        this.page = x.page.number;
+        this.pageSize = x.page.size;
+        this.totalElement = x.page.totalElements;
+      }
+    )
+  }
+  handleProductList()
+  {
+    if(this.route.snapshot.paramMap.has("id")==true)
     {
-      image: "assets/images/u3.webp",
-      btn: "primary",
-    },
+      this.currentCategory = Number(this.route.snapshot.paramMap.get("id"));
+    }
+    else{
+      this.currentCategory = 1;
+    }
+    if(this.previousCategory != this.currentCategory)
     {
-      image: "assets/images/u4.webp",
-      btn: "accent",
-    },
-    {
-      image: "assets/images/u2.webp",
-      btn: "warn",
-    },
-    {
-      image: "assets/images/u2.webp",
-      btn: "warn",
-    },
-    {
-      image: "assets/images/u2.webp",
-      btn: "warn",
-    },
-    {
-      image: "assets/images/u2.webp",
-      btn: "warn",
-    },
-    {
-      image: "assets/images/u2.webp",
-      btn: "warn",
-    },
-    {
-      image: "assets/images/u2.webp",
-      btn: "warn",
-    },
-    {
-      image: "assets/images/u2.webp",
-      btn: "warn",
-    },
-  ]
-
+      this.page = 1;
+    }
+    console.log(`The Current Category Id = ${this.currentCategory}, The Page Number: ${this.page},The Page Size: ${this.pageSize}`)
+    this.productService.getProducts(this.page - 1, this.pageSize,this.currentCategory).subscribe(
+      x => {
+        console.log(x);
+        this.cards = x._embedded.products;
+        console.log(this.cards);
+        this.page = x.page.number;
+        this.pageSize = x.page.size;
+        this.totalElement = x.page.totalElements;
+      }
+    )
+  }
 }

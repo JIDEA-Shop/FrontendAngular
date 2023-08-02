@@ -1,0 +1,13 @@
+<mat-card>
+    <mat-card-content>
+      <mat-card-title>Categories</mat-card-title>
+      <mat-chip-listbox aria-label="Category Selection">
+        <mat-chip-option *ngFor = "let category of categories" 
+        [selected] = "category.id === selectedCategory"
+        (selectionChange) = "selectCategory(category)">
+        {{category.categoryName}}
+      </mat-chip-option>
+      </mat-chip-listbox>
+  
+    </mat-card-content>
+  </mat-card>
