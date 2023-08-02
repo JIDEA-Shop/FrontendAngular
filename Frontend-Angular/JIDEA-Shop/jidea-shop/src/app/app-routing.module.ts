@@ -19,6 +19,8 @@ import { ProductComponent } from './dashboard/dashboard-components/product/produ
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FullComponent } from './layouts/full/full.component';
 import { ShophomeComponent } from './shophome/shophome.component';
+import { CardComponent } from './shophome/components/card/card.component';
+import { PromotionBannerComponent } from './shophome/components/promotion-banner/promotion-banner.component';
 
 const routes: Routes = [
   {
@@ -26,29 +28,21 @@ const routes: Routes = [
     component:FullComponent,
     children: [
       {path:"", redirectTo:"/shop", pathMatch:"full"},
-      {path:"shop", component:ShophomeComponent},
+      {
+        path:"shop",
+        component:ShophomeComponent,
+        children: [
+          { path: "category/:id", component:CardComponent},
+          { path: "search/:keyword",component:CardComponent},
+          { path: "", component:CardComponent},
+        ]
+      },
       {path:"home", component:DashboardComponent},
-      {path:"alerts", component:AlertsComponent},
-      {path:"forms", component:FormsComponent},
-      {path:"table", component:ProductComponent},
-      {path:"grid-list", component:GridListComponent},
-      {path:"menu", component:MenuComponent},
-      {path:"tabs", component:TabsComponent},
-      {path:"expansion", component:ExpansionComponent},
-      {path:"chips", component:ChipsComponent},
-      {path:"progress", component:ProgressComponent},
-      {path:"toolbar", component:ToolbarComponent},
-      {path:"progress-snipper", component:ProgressSnipperComponent},
-      {path:"snackbar", component:SnackbarComponent},
-      {path:"slider", component:SliderComponent},
-      {path:"slide-toggle", component:SlideToggleComponent},
-      {path:"tooltip", component:TooltipsComponent},
-      {path:"button", component:ButtonsComponent},
     ]
   },
 
-  {path:"", redirectTo:"/shop", pathMatch:"full"},
-  {path:"**", redirectTo:"/shop", pathMatch:"full"},
+  {path:"", redirectTo:"", pathMatch:"full"},
+  {path:"**", redirectTo: "",pathMatch: "full"}
 ];
 
 @NgModule({
