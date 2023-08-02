@@ -9,6 +9,8 @@ import { PromotionBannerComponent } from './components/promotion-banner/promotio
 import { ShophomeComponent } from './shophome.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { FeatherModule } from 'angular-feather';
+import { allIcons } from 'angular-feather/icons';
 
 
 
@@ -26,13 +28,15 @@ import { CategoriesComponent } from './components/categories/categories.componen
     AppRoutingModule,
     DemoFlexyModule,
     FormsModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    FeatherModule.pick(allIcons),
   ],
   exports: [
     ShophomeComponent,
     CardComponent,
     ProductComponent,
     PromotionBannerComponent,
+    CategoriesComponent
   ]
 })
 export class ShophomeModule { }

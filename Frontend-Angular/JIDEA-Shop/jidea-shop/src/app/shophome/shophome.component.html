@@ -9,36 +9,52 @@
       <mat-icon>favorite</mat-icon>
     </button>
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>add_shopping_cart</mat-icon>
+        <mat-icon>shopping_cart</mat-icon>
       </button>
   </mat-toolbar>
-<!-- Tabs -->
-<div class="row">
-    <!-- Card column -->
-    <div class="col-12">
-      <mat-card>
-        <mat-card-content>
-          <h4 class="mb-32">Events</h4>
-          <mat-tab-group mat-stretch-tabs="false">
-            <mat-tab label="Promotions">
-              <mat-card-content>
-                <app-promotion-banner></app-promotion-banner>
-                </mat-card-content>
-            </mat-tab>
-            <mat-tab label="Recommended For You">
-              <mat-card-content>
-                <app-shop-product></app-shop-product>
-            </mat-card-content>
-            </mat-tab>
-            <mat-tab label="Popular Products">
-                <mat-card-content>
-                  <app-shop-card></app-shop-card>
-              </mat-card-content>
-              </mat-tab>
-          </mat-tab-group>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  </div>
 
-<app-shop-card></app-shop-card>
+
+<!--Promo-->
+<mat-accordion>
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title> <h3>Events</h3> </mat-panel-title>
+      <mat-panel-description> Event Description </mat-panel-description>
+    </mat-expansion-panel-header>
+        <!-- Tabs -->
+        <div class="row">
+          <!-- Card column -->
+          <div class="col-12">
+
+                <mat-tab-group mat-stretch-tabs="false">
+                  <mat-tab label="Promotions">
+                    <mat-card-content>
+                      <app-promotion-banner></app-promotion-banner>
+                      </mat-card-content>
+                  </mat-tab>
+                  <mat-tab label="Recommended For You">
+                    <mat-card-content>
+                      <app-shop-product></app-shop-product>
+                  </mat-card-content>
+                  </mat-tab>
+                  <mat-tab label="Popular Products">
+                      <mat-card-content>
+                        <app-shop-card></app-shop-card>
+                    </mat-card-content>
+                    </mat-tab>
+                </mat-tab-group>
+
+          </div>
+        </div>
+  </mat-expansion-panel>
+</mat-accordion>
+<!--Routing Content-->
+<mat-card>
+  <mat-card-content>
+    <mat-card-title>
+      <mat-icon>store</mat-icon>
+    </mat-card-title>
+
+    <router-outlet></router-outlet>
+  </mat-card-content>
+</mat-card>

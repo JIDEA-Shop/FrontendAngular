@@ -86,15 +86,7 @@
 
     <!-- Content -->
     <div class="body-wrapper">
-      <mat-card>
-        <mat-card-content>
-          <mat-card-title>Categories</mat-card-title>
-          <mat-chip-listbox aria-label="Category Selection">
-            <mat-chip-option *ngFor = "let category of categories">{{category.categoryName}}</mat-chip-option>
-          </mat-chip-listbox>
-      
-        </mat-card-content>
-      </mat-card>
+      <app-categories></app-categories>
       <div class="page-wrapper">
         <router-outlet></router-outlet>
       </div>
@@ -113,7 +105,7 @@
 <div *ngIf="search" class="search-section d-flex align-items-center">
   <mat-form-field class="w-100" color="primary" >
     <mat-label class="fs-16">Search Here</mat-label>
-    <input matInput>
+    <input matInput type = "search" #myInput (keyup.enter)="doSearch(myInput.value)">
   </mat-form-field>
   <button mat-icon-button (click)="search=!search">
     <i-feather name="x-circle" class="mt-n3 text-light-muted feather-base text-dark"></i-feather>

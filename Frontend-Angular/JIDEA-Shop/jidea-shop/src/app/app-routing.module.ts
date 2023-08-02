@@ -27,32 +27,22 @@ const routes: Routes = [
     path:"",
     component:FullComponent,
     children: [
-      {path:"", redirectTo:"/home", pathMatch:"full"},
+      {path:"", redirectTo:"/shop", pathMatch:"full"},
       {
         path:"shop",
         component:ShophomeComponent,
+        children: [
+          { path: "category/:id", component:CardComponent},
+          { path: "search/:keyword",component:CardComponent},
+          { path: "", component:CardComponent},
+        ]
       },
       {path:"home", component:DashboardComponent},
-      {path:"alerts", component:AlertsComponent},
-      {path:"forms", component:FormsComponent},
-      {path:"table", component:ProductComponent},
-      {path:"grid-list", component:GridListComponent},
-      {path:"menu", component:MenuComponent},
-      {path:"tabs", component:TabsComponent},
-      {path:"expansion", component:ExpansionComponent},
-      {path:"chips", component:ChipsComponent},
-      {path:"progress", component:ProgressComponent},
-      {path:"toolbar", component:ToolbarComponent},
-      {path:"progress-snipper", component:ProgressSnipperComponent},
-      {path:"snackbar", component:SnackbarComponent},
-      {path:"slider", component:SliderComponent},
-      {path:"slide-toggle", component:SlideToggleComponent},
-      {path:"tooltip", component:TooltipsComponent},
-      {path:"button", component:ButtonsComponent},
     ]
   },
 
-  {path:"", redirectTo:"/shop", pathMatch:"full"},
+  {path:"", redirectTo:"", pathMatch:"full"},
+  {path:"**", redirectTo: "",pathMatch: "full"}
 ];
 
 @NgModule({

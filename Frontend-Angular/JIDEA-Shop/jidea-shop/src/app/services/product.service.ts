@@ -13,16 +13,22 @@ export class ProductService {
   private productCatergoryUrl = `http://localhost:5000/api/product-category`;
   constructor(private http: HttpClient) { }
 /**
- * return a list of products
+ * return a list of products,
+ * getProducts return all Products with Page and defail category of 1
+ * getCategory return all categories
+ * getSearch product return product based on keyword.
  * @param size 
  * @param page 
  * @returns 
  */
-  getProducts():Observable<GetProductResponse>{
-    return this.http.get<GetProductResponse>(`${this.productURL}`);
+  getProducts(page:number, pageSize:number, category_id:number):Observable<GetProductResponse>{
+    return this.http.get<GetProductResponse>(`${this.productURL}/search/findByCategoryId?id=${category_id}&page=${page}&size=${pageSize}`);
   }
   getCategories():Observable<GetCategoryResponse>{
     return this.http.get<GetCategoryResponse>(`${this.productCatergoryUrl}`);
+  }
+  getSearchProduct(page: number, pageSize: number, keyword: string):Observable<GetProductResponse>{
+    return this.http.get<GetProductResponse>(`${this.productURL}/search/findByNameContaining?name=${keyword}&page=${page}&size=${pageSize}`)
   }
 
 }
