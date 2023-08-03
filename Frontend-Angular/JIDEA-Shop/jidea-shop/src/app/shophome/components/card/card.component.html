@@ -1,15 +1,26 @@
-
+<!-- Alerts -->
+    <div *ngIf="cards.length == 0"
+      class="alert {{ alert.background }} {{ alert.color }} d-flex fs-14 align-items-center rounded mb-16"
+      role="alert" style="padding: 25px;">
+      <i-feather name="{{ alert.icon }}" class="feather-base me-12"></i-feather>
+      {{ alert.message }} 
+    </div>
 <!-- Cards -->
 <div class="row">
     <div class="col-lg-3" *ngFor="let card of cards">
-      <mat-card class="overflow-hidden">
+
+      <mat-card class="overflow-hidden product-detail-available">
         <div>
-          <img src="#" class="w-100">
+          <a routerLink="/product-detail/{{card.id}}">
+            <img src="{{card.image_url}}" class="w-100">
+          </a>
         </div>
         <mat-card-content>
           <div>
             <p class="fs-18 lh-lg fw-medium">
-              {{card.name}}
+              <a routerLink="/product-detail/{{card.id}}">
+                {{card.name}}
+              </a>
             </p>
             <p class="op-7">
               {{card.unit_price}}
@@ -20,3 +31,15 @@
       </mat-card>
     </div>
   </div>
+  <mat-paginator #paginator
+  (page)="handlePageEvent($event)"
+  [length]="length"
+  [pageSize]="pageSize"
+  [disabled]="false"
+  [showFirstLastButtons]="true"
+  [pageSizeOptions]="true ? pageSizeOptions : []"
+  [hidePageSize]="false"
+  [pageIndex]="page"
+  aria-label="Select page">
+
+  </mat-paginator>
