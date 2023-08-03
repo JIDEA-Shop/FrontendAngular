@@ -24,6 +24,8 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
 import { SigninPageComponent } from './signin-page/signin-page.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { CardComponent } from './shophome/components/card/card.component';
+import { OrderItemsDetailsComponent } from './order-items-details/order-items-details.component';
+import { OrderReportPageComponent } from './order-report-page/order-report-page.component';
 
 
 const routes: Routes = [
@@ -47,6 +49,8 @@ const routes: Routes = [
   },
   {path:"signup", component:SignupPageComponent},
   {path:"signin", component:SigninPageComponent},
+  {path:"orderDetails", component:OrderItemsDetailsComponent},
+  {path:"report", component:OrderReportPageComponent},
   {path:"cart", component:CartPageComponent},
   {path:"", redirectTo:"", pathMatch:"full"},
   {path:"**", redirectTo: "",pathMatch: "full"}

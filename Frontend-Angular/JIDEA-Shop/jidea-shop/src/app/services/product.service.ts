@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable,map } from 'rxjs';
 import { Product } from '../common/classes/product';
 import { Category } from '../common/classes/category';
+import { Time } from '@angular/common';
+import { OrderItem } from '../common/classes/order-item';
+import { OrderItemProduct } from '../common/classes/order-item-product';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,6 +14,8 @@ export class ProductService {
   // private productCatergoryUrl = `http://34.198.182.156:5000/api/product-category`;
   private productURL = `http://localhost:5000/api/products`;
   private productCatergoryUrl = `http://localhost:5000/api/product-category`;
+  private orderURL = 'http://localhost:9001/api/orders';
+  private orderProductListURL = 'http://localhost:9001/api/orders/productList'
   constructor(private http: HttpClient) { }
 /**
  * return a list of products,
@@ -29,6 +34,13 @@ export class ProductService {
   }
   getSearchProduct(page: number, pageSize: number, keyword: string):Observable<GetProductResponse>{
     return this.http.get<GetProductResponse>(`${this.productURL}/search/findByNameContaining?name=${keyword}&page=${page}&size=${pageSize}`)
+  }
+  getOrderList():Observable<OrderItem[]>{
+    return this.http.get<OrderItem[]>(this.orderURL);
+  }
+
+  getOrderListItems(orderId: number):Observable<OrderItemProduct[]>{
+    return this.http.get<OrderItemProduct[]>(`${this.orderProductListURL}/${orderId}`);
   }
 
 }
@@ -53,4 +65,10 @@ interface GetCategoryResponse{
     totalPages:number,
     number:number
   }
+
+  
+}
+
+interface GetOrderResponse{
+  
 }
