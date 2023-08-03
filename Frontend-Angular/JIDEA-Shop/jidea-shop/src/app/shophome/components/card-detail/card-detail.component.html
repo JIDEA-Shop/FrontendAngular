@@ -1,0 +1,35 @@
+<!-- ============================================================== -->
+<!-- row -->
+<!-- ============================================================== -->
+<div class="row">
+    <!-- Card column -->
+    <div class="col-12">
+      <mat-card>
+        <mat-card-content>
+          <h4 class="mb-32">Basic Tab</h4>
+          <mat-tab-group mat-stretch-tabs="false">
+            <mat-tab label="Product Detail">
+                <mat-card-content>
+                    <div>
+                        <img src = "#" class = "w-100"style = "height:700px"/>
+                      <p class="fs-26">
+                        {{getThisProduct().name}}
+                      </p>
+                      <p class="op-7 lh-lg">
+                        {{getThisProduct().description}}
+                      </p>
+                      <h4>
+                        {{getThisProduct().unit_price}}
+                      </h4>
+                      <button mat-flat-button color="alert" class="fw-normal mt-4">Add To Cart</button>
+                    </div>
+                  </mat-card-content>
+            </mat-tab>
+            <mat-tab label="Tab 2">
+              <mat-card-content>Content 2</mat-card-content>
+            </mat-tab>
+          </mat-tab-group>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>

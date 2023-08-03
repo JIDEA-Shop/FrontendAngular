@@ -1,4 +1,5 @@
 import { Component,OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/common/classes/product';
 import { ProductService } from 'src/app/services/product.service';
@@ -17,12 +18,15 @@ interface alert {
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-  private page = 1;
-  private pageSize = 10;
+  page = 1;
+  pageSize = 12;
   searchMode:boolean = false;
   currentCategory:number = 1;
   previousCategory:number = this.currentCategory;
-  totalElement:number = 1;
+  length:number = 1;
+  pageSizeOptions = [4, 8, 12,16];
+  pageEvent: PageEvent = new PageEvent();
+
   alert:alert = {
     border: "alert-border-danger",
     background: "alert-danger",
@@ -55,7 +59,7 @@ export class CardComponent implements OnInit {
         console.log(this.cards);
         this.page = x.page.number;
         this.pageSize = x.page.size;
-        this.totalElement = x.page.totalElements;
+        this.length = x.page.totalElements;
       }
     )
   }
@@ -73,15 +77,21 @@ export class CardComponent implements OnInit {
       this.page = 1;
     }
     console.log(`The Current Category Id = ${this.currentCategory}, The Page Number: ${this.page},The Page Size: ${this.pageSize}`)
-    this.productService.getProducts(this.page - 1, this.pageSize,this.currentCategory).subscribe(
-      x => {
-        console.log(x);
-        this.cards = x._embedded.products;
-        console.log(this.cards);
-        this.page = x.page.number;
-        this.pageSize = x.page.size;
-        this.totalElement = x.page.totalElements;
-      }
+    this.handlePageEvent(this.pageEvent);
+  }
+  
+  handlePageEvent(event?:PageEvent){
+    if(event != undefined)
+      this.productService.getProducts(event.pageIndex, event.pageSize,this.currentCategory).subscribe(
+        x => {
+          this.cards = x._embedded.products;
+          this.page = x.page.number + 1;
+          this.pageSize = x.page.size;
+          this.length = x.page.totalElements;
+        }
     )
+    else{
+      console.log("Event undefined")
+    }
   }
 }
