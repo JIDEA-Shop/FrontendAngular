@@ -2,6 +2,14 @@ import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/common/classes/product';
 import { ProductService } from 'src/app/services/product.service';
+interface alert {
+  border: string;
+  background: string;
+  color: string;
+  icon: string;
+  iconColor: string;
+  message: string;
+}
 
 @Component({
   selector: 'app-shop-card',
@@ -15,6 +23,14 @@ export class CardComponent implements OnInit {
   currentCategory:number = 1;
   previousCategory:number = this.currentCategory;
   totalElement:number = 1;
+  alert:alert = {
+    border: "alert-border-danger",
+    background: "alert-danger",
+    color: "alert-text-danger",
+    icon: "alert-circle",
+    iconColor: "text-danger",
+    message: "This is an error alert — check it out!",
+  }
   constructor(private productService:ProductService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {

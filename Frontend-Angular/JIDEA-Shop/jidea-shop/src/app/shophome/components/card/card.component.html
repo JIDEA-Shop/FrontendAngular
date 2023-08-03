@@ -1,7 +1,21 @@
+<!-- Alerts -->
+<div class="card">
+  <div class="card-body">
+    <h4 class="mb-32">Alerts</h4>
 
+    <div *ngIf="totalElement == 0">
+      class="alert {{ alert.background }} {{ alert.color }} d-flex fs-14 align-items-center rounded mb-16"
+      role="alert">
+      <i-feather name="{{ alert.icon }}" class="{{ alert.iconColor }} feather-base me-12"></i-feather>
+      {{ alert.message }}
+    </div>
+
+  </div>
+</div>
 <!-- Cards -->
 <div class="row">
     <div class="col-lg-3" *ngFor="let card of cards">
+
       <mat-card class="overflow-hidden">
         <div>
           <img src="#" class="w-100">
