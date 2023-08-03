@@ -20,10 +20,13 @@ import { SigninFormComponent } from './components/signin-form/signin-form.compon
 import { SigninPageComponent } from './signin-page/signin-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CartPageComponent } from './cart-page/cart-page.component';
-
+import { MatTableModule } from '@angular/material/table';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ShophomeModule } from './shophome/shophome.module';
+import { OrderItemsDetailsComponent } from './order-items-details/order-items-details.component';
+import { OrderReportPageComponent } from './order-report-page/order-report-page.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -34,7 +37,9 @@ import { ShophomeModule } from './shophome/shophome.module';
     SignupFormComponent,
     SigninFormComponent,
     SigninPageComponent,
-    CartPageComponent 
+    CartPageComponent,
+    OrderItemsDetailsComponent,
+    OrderReportPageComponent 
 
   ],
   imports: [
@@ -48,7 +53,9 @@ import { ShophomeModule } from './shophome/shophome.module';
     ComponentsModule,
     FormsModule,
     FontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    NgbModule
 
   ],
   providers: [],

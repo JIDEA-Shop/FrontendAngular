@@ -7,16 +7,12 @@ import { OrderService } from '../services/order.service';
 import { OrderItemProduct } from '../common/classes/order-item-product';
 
 @Component({
-  selector: 'app-cart-page',
-  templateUrl: './cart-page.component.html',
-  styleUrls: ['./cart-page.component.scss']
-
+  selector: 'app-order-report-page',
+  templateUrl: './order-report-page.component.html',
+  styleUrls: ['./order-report-page.component.scss']
 })
-
-export class CartPageComponent  implements OnInit{
-  displayedColumns: string[] = ['User ID', 'Address', 'Total' ,'Date', 'Time', 'Buttons'];
-
-  itemCount = 2;
+export class OrderReportPageComponent implements OnInit{
+  displayedColumns: string[] = ['Order Number', 'User ID', 'Address', 'Items','Total' ,'Date', 'Time'];
 
   cartDetails:OrderItem[] = [];
   // orderList: OrderItemProduct [] = [];
@@ -36,37 +32,16 @@ export class CartPageComponent  implements OnInit{
   getCartDetails(){
     this.prodcutService.getOrderList().subscribe(
       (response) => {
-        console.log(response);
         this.cartDetails = response;
-        console.log(response[0].orderItemList);
         // this.orderList = response.orderItemList;
       }
     )
   }
-
-  decreaseCount(){
-    this.itemCount--;
+  
+  goToDetails(orderId: number){
+    OrderService.setOrderIdDetail(orderId);
+    this.router.navigate(['/orderDetails'])
   }
-
-  increaseCount(){
-    this.itemCount++;
-  }
-  // goToDetails(orderId: number){
-  //   console.log("id from cart: " + orderId);
-    
-  //   OrderService.setOrderIdDetail(orderId);
-  //   this.router.navigate(['/orderDetails'])
-  // }
-
-  // getOrderItemsDetails(orderId: number){
-  //   this.prodcutService.getOrderListItems(orderId).subscribe(
-  //     (response) => {
-  //       console.log(response);
-  //       this.orderList = response;
-        
-  //     }
-  //   )
-  // }
 }
 
 interface GetOrderResponse{
