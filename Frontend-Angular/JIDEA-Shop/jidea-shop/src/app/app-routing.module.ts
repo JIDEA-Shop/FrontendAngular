@@ -24,6 +24,7 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
 import { SigninPageComponent } from './signin-page/signin-page.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { CardComponent } from './shophome/components/card/card.component';
+import { CardDetailComponent } from './shophome/components/card-detail/card-detail.component';
 
 
 const routes: Routes = [
@@ -41,7 +42,7 @@ const routes: Routes = [
           { path: "", component:CardComponent},
         ]
       },
-      
+      { path: "product-detail/:id",component:CardDetailComponent},
       {path:"home", component:DashboardComponent},
     ]
   },

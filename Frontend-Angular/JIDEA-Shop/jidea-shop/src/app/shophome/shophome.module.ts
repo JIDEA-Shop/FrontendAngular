@@ -11,6 +11,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
+import { CardDetailComponent } from './components/card-detail/card-detail.component';
 
 
 
@@ -22,6 +23,7 @@ import { allIcons } from 'angular-feather/icons';
     ProductComponent,
     PromotionBannerComponent,
     CategoriesComponent,
+    CardDetailComponent,
   ],
   imports: [
     CommonModule,

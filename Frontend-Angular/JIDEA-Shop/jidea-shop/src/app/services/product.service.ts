@@ -30,6 +30,10 @@ export class ProductService {
   getSearchProduct(page: number, pageSize: number, keyword: string):Observable<GetProductResponse>{
     return this.http.get<GetProductResponse>(`${this.productURL}/search/findByNameContaining?name=${keyword}&page=${page}&size=${pageSize}`)
   }
+  getProductDetail(product_id:number):Observable<Product>
+  {
+    return this.http.get<Product>(`${this.productURL}/${product_id}`);
+  }
 
 }
 interface GetProductResponse{
