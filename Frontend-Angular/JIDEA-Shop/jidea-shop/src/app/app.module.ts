@@ -29,6 +29,7 @@ import { OrderReportPageComponent } from './order-report-page/order-report-page.
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ManagementComponent } from './management/management.component';
 import { AuthModule } from '@auth0/auth0-angular';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { AuthModule } from '@auth0/auth0-angular';
     CartPageComponent,
     OrderItemsDetailsComponent,
     OrderReportPageComponent,
-    ManagementComponent 
+    ManagementComponent,
+    LoginComponent 
 
   ],
   imports: [
