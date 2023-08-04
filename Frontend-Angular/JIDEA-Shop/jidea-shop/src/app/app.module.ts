@@ -14,8 +14,6 @@ import { DemoFlexyModule } from './demo-flexy-module'
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ComponentsModule } from './components/components.module';
 
-import { SignupPageComponent } from './signup-page/signup-page.component';
-import { SignupFormComponent } from './components/signup-form/signup-form.component';
 import { SigninFormComponent } from './components/signin-form/signin-form.component';
 import { SigninPageComponent } from './signin-page/signin-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -29,7 +27,8 @@ import { OrderReportPageComponent } from './order-report-page/order-report-page.
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ManagementComponent } from './management/management.component';
 import { AuthModule } from '@auth0/auth0-angular';
-import { LoginComponent } from './login/login.component';
+import { SignupPageComponent } from './signup-page/signup-page.component';
+import { SignupFormComponent } from './components/signup-form/signup-form.component';
 
 
 @NgModule({
@@ -44,8 +43,6 @@ import { LoginComponent } from './login/login.component';
     OrderItemsDetailsComponent,
     OrderReportPageComponent,
     ManagementComponent,
-    LoginComponent 
-
   ],
   imports: [
     BrowserModule,
