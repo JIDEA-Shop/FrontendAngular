@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { map, shareReplay } from 'rxjs/operators';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
-  color: string;
 import { OktaAuthStateService, OKTA_AUTH } from '@okta/okta-angular';
 import { OktaAuth } from '@okta/okta-auth-js';
 interface sidebarMenu {
