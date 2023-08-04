@@ -60,6 +60,11 @@ export class FullComponent implements OnInit{
       link:"/shop",
       icon:"home",
       menu:"SHOP HOME"
+    },
+    {
+      link:"/manage",
+      icon:"layers",
+      menu:"MANAGE PRODUCTS"
     }
   ]
 

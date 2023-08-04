@@ -27,6 +27,7 @@ import { ShophomeModule } from './shophome/shophome.module';
 import { OrderItemsDetailsComponent } from './order-items-details/order-items-details.component';
 import { OrderReportPageComponent } from './order-report-page/order-report-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ManagementComponent } from './management/management.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SigninPageComponent,
     CartPageComponent,
     OrderItemsDetailsComponent,
-    OrderReportPageComponent 
+    OrderReportPageComponent,
+    ManagementComponent 
 
   ],
   imports: [

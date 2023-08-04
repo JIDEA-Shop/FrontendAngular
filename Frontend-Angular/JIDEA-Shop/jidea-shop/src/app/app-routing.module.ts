@@ -29,6 +29,7 @@ import { OrderItemsDetailsComponent } from './order-items-details/order-items-de
 import { OrderReportPageComponent } from './order-report-page/order-report-page.component';
 
 import { CardDetailComponent } from './shophome/components/card-detail/card-detail.component';
+import { ManagementComponent } from './management/management.component';
 
 
 
@@ -47,6 +48,7 @@ const routes: Routes = [
           { path: "", component:CardComponent},
         ]
       },
+      {path:"manage",component:ManagementComponent},
       { path: "product-detail/:id",component:CardDetailComponent},
       {path:"home", component:DashboardComponent},
     ]

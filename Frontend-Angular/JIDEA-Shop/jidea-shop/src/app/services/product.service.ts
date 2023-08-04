@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable,map } from 'rxjs';
 import { Product } from '../common/classes/product';
 import { Category } from '../common/classes/category';
-import { Time } from '@angular/common';
 import { OrderItem } from '../common/classes/order-item';
 import { OrderItemProduct } from '../common/classes/order-item-product';
 @Injectable({
@@ -42,13 +41,12 @@ export class ProductService {
 
   getOrderListItems(orderId: number):Observable<OrderItemProduct[]>{
     return this.http.get<OrderItemProduct[]>(`${this.orderProductListURL}/${orderId}`);
-
+  }
   getProductDetail(product_id:number):Observable<Product>
   {
     return this.http.get<Product>(`${this.productURL}/${product_id}`);
 
   }
-
 }
 interface GetProductResponse{
   _embedded:{
