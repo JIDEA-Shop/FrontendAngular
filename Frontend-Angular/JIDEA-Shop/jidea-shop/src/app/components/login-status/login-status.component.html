@@ -1,0 +1,33 @@
+<div class="ms-auto">
+    <div class="ms-auto d-flex align-items-center">
+    
+      <button mat-button class="fs-16 pt-4 pb-4 ps-8 pe-8 text-light-muted d-flex align-items-center" [matMenuTriggerFor]="menu">
+        <div class="d-flex align-items-center">
+          <span class="fw-light ms-8 text-secondary">Hi,</span>
+          <span class = "fw-bold ms-8">{{userFullName}}</span>
+          <i-feather name="chevron-down" class="feather-base"></i-feather>
+          <span><fa-icon [icon]="userIcon" class="fa-xl me-15"></fa-icon></span>
+          <!-- <img src="assets/images/user2.webp" class="rounded-circle" alt="">  -->
+        </div>
+      </button>
+      <fa-icon [icon]="cartIcon" class="fa-xl ms-40 me-20" routerLink = "/cart"></fa-icon>
+    </div>
+      <mat-menu #menu="matMenu" class="profile-dropdown">
+        <div class="p-16 mb-4">
+          <button mat-menu-item class="fs-16">Edit Profile</button>
+          <button mat-menu-item class="fs-16">Account</button>
+          <button mat-menu-item class="fs-16">Change Password</button>
+          <button mat-menu-item class="fs-16" routerLink = "/signup">Sign Up</button>
+        </div>
+        
+        <hr>
+
+        <div class="p-16" *ngIf="!isAuthenticated">
+          <button mat-flat-button color="accent" (click)="login()" class="w-100 text-white">Log in</button>
+        </div>
+        <div class="p-16" *ngIf="isAuthenticated">
+            <button mat-flat-button color="accent" (click)="logout()" class="w-100 text-white">Log out</button>
+        </div>
+
+      </mat-menu>
+    </div>

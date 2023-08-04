@@ -27,9 +27,10 @@ import { CardComponent } from './shophome/components/card/card.component';
 
 import { OrderItemsDetailsComponent } from './order-items-details/order-items-details.component';
 import { OrderReportPageComponent } from './order-report-page/order-report-page.component';
-
+import { OktaCallbackComponent } from '@okta/okta-angular'
 import { CardDetailComponent } from './shophome/components/card-detail/card-detail.component';
 import { ManagementComponent } from './management/management.component';
+import { LoginOktaComponent } from './components/login-okta/login-okta.component';
 
 
 
@@ -38,7 +39,7 @@ const routes: Routes = [
     path:"",
     component:FullComponent,
     children: [
-      {path:"", redirectTo:"/shop", pathMatch:"full"},
+      { path:"", redirectTo:"/shop", pathMatch:"full"},
       {
         path:"shop",
         component:ShophomeComponent,
@@ -48,11 +49,13 @@ const routes: Routes = [
           { path: "", component:CardComponent},
         ]
       },
-      {path:"manage",component:ManagementComponent},
-      { path: "product-detail/:id",component:CardDetailComponent},
-      {path:"home", component:DashboardComponent},
+      { path:"manage",component:ManagementComponent},
+      { path:"product-detail/:id",component:CardDetailComponent},
+      { path:"home", component:DashboardComponent},
     ]
   },
+  {path:"login/callback",component: OktaCallbackComponent},
+  {path:"login",component: LoginOktaComponent},
   {path:"signup", component:SignupPageComponent},
   {path:"signin", component:SigninPageComponent},
   {path:"orderDetails", component:OrderItemsDetailsComponent},

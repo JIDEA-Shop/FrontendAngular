@@ -21,14 +21,21 @@ import { SigninPageComponent } from './signin-page/signin-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { MatTableModule } from '@angular/material/table';
-
+import { ProductService } from './services/product.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ShophomeModule } from './shophome/shophome.module';
 import { OrderItemsDetailsComponent } from './order-items-details/order-items-details.component';
 import { OrderReportPageComponent } from './order-report-page/order-report-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ManagementComponent } from './management/management.component';
-
+import {
+  OktaAuthModule,
+  OKTA_CONFIG 
+} from '@okta/okta-angular';
+import { OktaAuth } from '@okta/okta-auth-js';
+import myAppConfig from './config/my-app-config';
+const oktaConfig = myAppConfig.oidc;
+const oktaAuth = new OktaAuth(oktaConfig);
 
 @NgModule({
   declarations: [
@@ -41,8 +48,7 @@ import { ManagementComponent } from './management/management.component';
     CartPageComponent,
     OrderItemsDetailsComponent,
     OrderReportPageComponent,
-    ManagementComponent 
-
+    ManagementComponent
   ],
   imports: [
     BrowserModule,
@@ -57,10 +63,10 @@ import { ManagementComponent } from './management/management.component';
     FontAwesomeModule,
     HttpClientModule,
     MatTableModule,
-    NgbModule
-
+    NgbModule,
+    OktaAuthModule
   ],
-  providers: [],
+  providers: [ProductService,{ provide: OKTA_CONFIG, useValue: { oktaAuth }}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
