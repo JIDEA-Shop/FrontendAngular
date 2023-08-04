@@ -28,6 +28,7 @@ import { OrderItemsDetailsComponent } from './order-items-details/order-items-de
 import { OrderReportPageComponent } from './order-report-page/order-report-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ManagementComponent } from './management/management.component';
+import { AuthModule } from '@auth0/auth0-angular';
 
 
 @NgModule({
@@ -57,8 +58,15 @@ import { ManagementComponent } from './management/management.component';
     FontAwesomeModule,
     HttpClientModule,
     MatTableModule,
-    NgbModule
-
+    NgbModule,
+    AuthModule.forRoot({
+      domain: 'dev-nfojln4l7hgsc4kb.us.auth0.com',
+      clientId: 'DUBcoLACuWE2EJmaMQuJY1osCZeLkock',
+      authorizationParams: {
+        redirect_uri: 'http://localhost:4200/login/callback',
+        scopes: ['openid','profile','email'],
+      }
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
