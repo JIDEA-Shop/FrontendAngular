@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable,map } from 'rxjs';
 import { Product } from '../common/classes/product';
 import { Category } from '../common/classes/category';
+import { Time } from '@angular/common';
 import { OrderItem } from '../common/classes/order-item';
 import { OrderItemProduct } from '../common/classes/order-item-product';
 @Injectable({
@@ -15,38 +16,44 @@ export class ProductService {
   private productCatergoryUrl = `http://localhost:5000/api/product-category`;
   private orderURL = 'http://localhost:9001/api/orders';
   private orderProductListURL = 'http://localhost:9001/api/orders/productList'
-  constructor(private http: HttpClient) { }
-/**
- * return a list of products,
- * getProducts return all Products with Page and defail category of 1
- * getCategory return all categories
- * getSearch product return product based on keyword.
- * @param size 
- * @param page 
- * @returns 
- */
-  getProducts(page:number, pageSize:number, category_id:number):Observable<GetProductResponse>{
+
+  constructor(private http: HttpClient) {
+  }
+
+  /**
+   * return a list of products,
+   * getProducts return all Products with Page and defail category of 1
+   * getCategory return all categories
+   * getSearch product return product based on keyword.
+   * @param size
+   * @param page
+   * @returns
+   */
+  getProducts(page: number, pageSize: number, category_id: number): Observable<GetProductResponse> {
     return this.http.get<GetProductResponse>(`${this.productURL}/search/findByCategoryId?id=${category_id}&page=${page}&size=${pageSize}`);
   }
-  getCategories():Observable<GetCategoryResponse>{
+
+  getCategories(): Observable<GetCategoryResponse> {
     return this.http.get<GetCategoryResponse>(`${this.productCatergoryUrl}`);
   }
-  getSearchProduct(page: number, pageSize: number, keyword: string):Observable<GetProductResponse>{
+
+  getSearchProduct(page: number, pageSize: number, keyword: string): Observable<GetProductResponse> {
     return this.http.get<GetProductResponse>(`${this.productURL}/search/findByNameContaining?name=${keyword}&page=${page}&size=${pageSize}`)
   }
 
-  getOrderList():Observable<OrderItem[]>{
+  getOrderList(): Observable<OrderItem[]> {
     return this.http.get<OrderItem[]>(this.orderURL);
   }
 
-  getOrderListItems(orderId: number):Observable<OrderItemProduct[]>{
+  getOrderListItems(orderId: number): Observable<OrderItemProduct[]> {
     return this.http.get<OrderItemProduct[]>(`${this.orderProductListURL}/${orderId}`);
   }
-  getProductDetail(product_id:number):Observable<Product>
-  {
-    return this.http.get<Product>(`${this.productURL}/${product_id}`);
+    getProductDetail(product_id:number):Observable<Product>{
+      return this.http.get<Product>(`${this.productURL}/${product_id}`);
 
-  }
+    }
+
+
 }
 interface GetProductResponse{
   _embedded:{
@@ -70,9 +77,9 @@ interface GetCategoryResponse{
     number:number
   }
 
-  
+
 }
 
 interface GetOrderResponse{
-  
+
 }
