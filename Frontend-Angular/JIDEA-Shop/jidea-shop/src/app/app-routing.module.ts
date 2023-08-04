@@ -54,6 +54,7 @@ const routes: Routes = [
     ]
   },
   {path:"signup", component:SignupPageComponent},
+  // {path:"login",component:SigninPageComponent},
   {path:"signin", component:SigninPageComponent},
   {path:"orderDetails", component:OrderItemsDetailsComponent},
   {path:"report", component:OrderReportPageComponent},

@@ -44,7 +44,7 @@
         <button mat-button class="fs-16 pt-4 pb-4 ps-8 pe-8 text-light-muted d-flex align-items-center" [matMenuTriggerFor]="menu">
           <div class="d-flex align-items-center">
             <span class="fw-light ms-8 text-secondary">Hi,</span>
-            <span class="fw-bold ms-8">Account</span>
+            <span class="fw-bold ms-8">{{userFullName}}</span>
             <i-feather name="chevron-down" class="feather-base"></i-feather>
             <span><fa-icon [icon]="userIcon" class="fa-xl me-15"></fa-icon></span>
             <!-- <img src="assets/images/user2.webp" class="rounded-circle" alt=""> -->
@@ -57,15 +57,16 @@
             <button mat-menu-item class="fs-16">Edit Profile</button>
             <button mat-menu-item class="fs-16">Account</button>
             <button mat-menu-item class="fs-16">Change Password</button>
-            <button mat-menu-item class="fs-16" (click)="goToSignup()">Sign Up</button>
+            <button mat-menu-item class="fs-16" (click)="goToSignup()">Sign Up with JIDEA</button>
           </div>
           
           <hr>
+          <div class = "">
 
-          <div class="p-16">
-            <button mat-flat-button color="accent" class="w-100 text-white">Logout</button>
           </div>
-
+            <div class = "p-16">
+              <button mat-flat-button color="accent" class="w-100 text-white">Log in</button>
+            </div>
         </mat-menu>
       </div>
     </mat-toolbar>
