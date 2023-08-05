@@ -14,8 +14,7 @@ export class CardDetailComponent implements OnInit {
   constructor(private route:ActivatedRoute,private productService:ProductService){}
 
   ngOnInit(): void {
-    this.currentProductId = Number(this.route.snapshot.paramMap.get("id"));
-    this.handleProductDetail(this.currentProductId);
+      this.handleProductDetail(this.currentProductId);
   }
   handleProductDetail(id:number) {
     this.productService.getProductDetail(id).subscribe(

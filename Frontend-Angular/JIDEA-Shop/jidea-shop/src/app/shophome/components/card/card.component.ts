@@ -23,7 +23,7 @@ export class CardComponent implements OnInit {
   searchMode:boolean = false;
   currentCategory:number = 1;
   previousCategory:number = this.currentCategory;
-  length:number = 1;
+  length:number = 0;
   pageSizeOptions = [4, 8, 12,16];
   pageEvent: PageEvent = new PageEvent();
 
@@ -33,30 +33,31 @@ export class CardComponent implements OnInit {
     color: "alert-text-danger",
     icon: "alert-circle",
     iconColor: "text-danger",
-    message: "This is an error alert — check it out!",
+    message: "No product Found!!!!",
   }
   constructor(private productService:ProductService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(
-      () => this.listProducts()
-    )
+    this.route.paramMap.subscribe(() => 
+    {
+      console.log("Card Init");
+      this.listProducts()}
+    );
   }
   cards: Product [] = [];
   listProducts(){
-    this.searchMode = this.route.snapshot.paramMap.has(`keyword`);
+    this.searchMode = this.route.snapshot.paramMap.has("keyword");
     if(this.searchMode)
     {
-      this.handleSearchList(String(this.route.snapshot.paramMap.get(`keyword`)));
+      console.log(String(this.route.snapshot.paramMap.get("keyword")));
+      this.handleSearchList(String(this.route.snapshot.paramMap.get("keyword")));
     }
-    this.handleProductList();
+    else{this.handleProductList();}
   }
   handleSearchList(keyword:string) {
     this.productService.getSearchProduct(this.page,this.pageSize,keyword).subscribe(
       x => {
-        console.log(x);
         this.cards = x._embedded.products;
-        console.log(this.cards);
         this.page = x.page.number;
         this.pageSize = x.page.size;
         this.length = x.page.totalElements;
@@ -82,7 +83,7 @@ export class CardComponent implements OnInit {
   
   handlePageEvent(event?:PageEvent){
     if(event != undefined)
-      this.productService.getProducts(event.pageIndex, event.pageSize,this.currentCategory).subscribe(
+      this.productService.getProducts(event.pageIndex-1, event.pageSize,this.currentCategory).subscribe(
         x => {
           this.cards = x._embedded.products;
           this.page = x.page.number + 1;

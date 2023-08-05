@@ -1,11 +1,12 @@
 <!-- Alerts -->
-    <div *ngIf="cards.length == 0"
+    <div *ngIf="cards.length==0 || cards.length==null || cards.length==undefined ,else display"
       class="alert {{ alert.background }} {{ alert.color }} d-flex fs-14 align-items-center rounded mb-16"
       role="alert" style="padding: 25px;">
       <i-feather name="{{ alert.icon }}" class="feather-base me-12"></i-feather>
       {{ alert.message }} 
     </div>
 <!-- Cards -->
+<ng-template #display>
 <div class="row">
     <div class="col-lg-3" *ngFor="let card of cards">
 
@@ -43,3 +44,4 @@
   aria-label="Select page">
 
   </mat-paginator>
+</ng-template>

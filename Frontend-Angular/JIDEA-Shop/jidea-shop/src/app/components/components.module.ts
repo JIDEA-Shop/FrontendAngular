@@ -22,6 +22,7 @@ import { TooltipsComponent } from './tooltips/tooltips.component';
 import { LoginOktaComponent } from './login-okta/login-okta.component';
 import { LoginStatusComponent } from './login-status/login-status.component'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   ],
   declarations: [
     LoginOktaComponent,
-    LoginStatusComponent
+    LoginStatusComponent,
+    CheckoutComponent
   ]
 })
 export class ComponentsModule { }

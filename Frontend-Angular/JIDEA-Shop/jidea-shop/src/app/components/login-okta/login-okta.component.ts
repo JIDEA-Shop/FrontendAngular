@@ -22,6 +22,17 @@ export class LoginOktaComponent implements OnInit{
         pkce: true,
         issuer: myAppConfig.oidc.issuer,
         scopes: myAppConfig.oidc.scopes
+      },
+      idps:[
+        { type: 'google', id: '0oaaox3qlcCYIr3Zu5d7' },
+      ],
+      idpDisplay: "PRIMARY",
+      i18n: {
+        en: {
+          'password.forgot.email.or.username.placeholder': 'Email',
+          'password.forgot.email.or.username.tooltip': 'Email',
+          'errors.E0000095': 'Unable to reset password.  Did you put in a valid email?'
+        }
       }
     });
   }

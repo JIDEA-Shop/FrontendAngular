@@ -28,6 +28,6 @@ export class CategoriesComponent implements OnInit{
   selectCategory(category:Category)
   {
     this.selectedCategory = category.id;
-    this.route.navigateByUrl(`shop/category/${category.id}`)
+    this.route.navigate([`shop/category/${category.id}`]);
   }
 }
