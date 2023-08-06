@@ -1,4 +1,4 @@
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FeatherModule } from "angular-feather";
 import { allIcons } from "angular-feather/icons";
 import { NgApexchartsModule } from "ng-apexcharts";
@@ -17,12 +17,15 @@ import { NgModule } from '@angular/core'
     imports: [
       CommonModule,
       AppRoutingModule,
+      ReactiveFormsModule,
       DemoFlexyModule,
       FormsModule,
       NgApexchartsModule,
       FeatherModule.pick(allIcons),
     ],
     exports: [
+      ManagementComponent,
+      UserProfileComponent
     ]
   })
   export class ManagementModule { }
