@@ -9,7 +9,7 @@ export class OrderItem {
         public orderItemList: OrderItemProduct[],
         public time: Time,
         public date: Date,
-        public userId: number,
+        public orderEmail: string,
         public totalPrice: number,
         public orderNumber: string,
         ){}

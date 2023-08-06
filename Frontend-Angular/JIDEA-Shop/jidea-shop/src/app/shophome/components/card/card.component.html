@@ -1,11 +1,12 @@
 <!-- Alerts -->
-    <div *ngIf="cards.length == 0"
+    <div *ngIf="cards.length==0 || cards.length==null || cards.length==undefined ,else display"
       class="alert {{ alert.background }} {{ alert.color }} d-flex fs-14 align-items-center rounded mb-16"
       role="alert" style="padding: 25px;">
       <i-feather name="{{ alert.icon }}" class="feather-base me-12"></i-feather>
       {{ alert.message }} 
     </div>
 <!-- Cards -->
+<ng-template #display>
 <div class="row">
     <div class="col-lg-3" *ngFor="let card of cards">
 
@@ -25,21 +26,23 @@
             <p class="op-7">
               {{card.unit_price}}
             </p>
-            <button mat-flat-button color="accent" class="fw-normal mt-4">Add To Cart</button>
+
+            <button mat-flat-button color="accent" class="fw-normal mt-4" (click)="addToCart(card.id)">Add To Cart</button>
+
           </div>
         </mat-card-content>
       </mat-card>
     </div>
   </div>
-  <mat-paginator #paginator
-  (page)="handlePageEvent($event)"
-  [length]="length"
-  [pageSize]="pageSize"
-  [disabled]="false"
-  [showFirstLastButtons]="true"
-  [pageSizeOptions]="true ? pageSizeOptions : []"
-  [hidePageSize]="false"
-  [pageIndex]="page"
-  aria-label="Select page">
-
-  </mat-paginator>
+    <mat-paginator #paginator
+    (page)="handlePageEvent($event)"
+    [length]="length"
+    [pageSize]="pageSize"
+    [disabled]="false"
+    [showFirstLastButtons]="true"
+    [pageSizeOptions]="true ? pageSizeOptions : []"
+    [hidePageSize]="false"
+    [pageIndex]="page"
+    aria-label="Select page">
+    </mat-paginator>
+</ng-template>

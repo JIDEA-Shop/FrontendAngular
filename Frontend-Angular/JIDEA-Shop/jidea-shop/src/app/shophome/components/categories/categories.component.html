@@ -1,13 +1,16 @@
-<mat-card>
-    <mat-card-content>
-      <mat-card-title>Categories</mat-card-title>
-      <mat-chip-listbox aria-label="Category Selection">
-        <mat-chip-option *ngFor = "let category of categories" 
-        [selected] = "category.id === selectedCategory"
-        (selectionChange) = "selectCategory(category)">
-        {{category.categoryName}}
-      </mat-chip-option>
-      </mat-chip-listbox>
-  
-    </mat-card-content>
-  </mat-card>
+<div fxLayout="row">
+  <mat-form-field>
+    <mat-label>Categories:</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let category of categories" (onSelectionChange)="selectCategory(category)">{{ category.categoryName }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<router-outlet></router-outlet>
+<!-- <mat-tab-group>
+  <mat-tab *ngFor="let category of categories" label="{{ category.categoryName }}" (click)="selectCategory(category)">
+    <div class = card-container>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-tab>
+</mat-tab-group> -->

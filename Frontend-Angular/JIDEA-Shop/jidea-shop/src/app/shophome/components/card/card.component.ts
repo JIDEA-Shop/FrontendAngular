@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { OktaAuthStateService } from '@okta/okta-angular';
 import { Product } from 'src/app/common/classes/product';
 import { ProductService } from 'src/app/services/product.service';
 interface alert {
@@ -23,9 +24,10 @@ export class CardComponent implements OnInit {
   searchMode:boolean = false;
   currentCategory:number = 1;
   previousCategory:number = this.currentCategory;
-  length:number = 1;
+  length:number = 0;
   pageSizeOptions = [4, 8, 12,16];
   pageEvent: PageEvent = new PageEvent();
+
 
   alert:alert = {
     border: "alert-border-danger",
@@ -33,30 +35,31 @@ export class CardComponent implements OnInit {
     color: "alert-text-danger",
     icon: "alert-circle",
     iconColor: "text-danger",
-    message: "This is an error alert — check it out!",
+    message: "No product Found!!!!",
   }
-  constructor(private productService:ProductService,private route: ActivatedRoute) { }
+  constructor(private productService:ProductService,private route: ActivatedRoute,private router:Router, private oktaService: OktaAuthStateService) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(
-      () => this.listProducts()
-    )
+    this.route.paramMap.subscribe(() => 
+    {
+      console.log("Card Init");
+      this.listProducts()}
+    );
   }
   cards: Product [] = [];
   listProducts(){
-    this.searchMode = this.route.snapshot.paramMap.has(`keyword`);
+    this.searchMode = this.route.snapshot.paramMap.has("keyword");
     if(this.searchMode)
     {
-      this.handleSearchList(String(this.route.snapshot.paramMap.get(`keyword`)));
+      console.log(String(this.route.snapshot.paramMap.get("keyword")));
+      this.handleSearchList(String(this.route.snapshot.paramMap.get("keyword")));
     }
-    this.handleProductList();
+    else{this.handleProductList();}
   }
   handleSearchList(keyword:string) {
     this.productService.getSearchProduct(this.page,this.pageSize,keyword).subscribe(
       x => {
-        console.log(x);
         this.cards = x._embedded.products;
-        console.log(this.cards);
         this.page = x.page.number;
         this.pageSize = x.page.size;
         this.length = x.page.totalElements;
@@ -82,7 +85,7 @@ export class CardComponent implements OnInit {
   
   handlePageEvent(event?:PageEvent){
     if(event != undefined)
-      this.productService.getProducts(event.pageIndex, event.pageSize,this.currentCategory).subscribe(
+      this.productService.getProducts(event.pageIndex-1, event.pageSize,this.currentCategory).subscribe(
         x => {
           this.cards = x._embedded.products;
           this.page = x.page.number + 1;
@@ -94,4 +97,42 @@ export class CardComponent implements OnInit {
       console.log("Event undefined")
     }
   }
+
+  
+  
+  addToCart(productId:number){
+    this.oktaService.authState$.subscribe((res)=>
+    {
+      if(res.isAuthenticated){
+        console.warn(productId);
+        let product = this.cards.filter(x => (x.id == productId))[0];
+        console.log(product);
+        
+        if(this.productService.handleQuantity(product)){
+          console.log(this.productService.handleQuantity(product));
+          this.productService.localAddToCart(product);
+        }
+      }
+      else{
+        this.router.navigateByUrl(`/login`);
+      }
+    })
+    // console.warn(productId);
+    // let product = this.cards.filter(x => (x.id == productId))[0];
+    // console.log(product);
+    
+    // if(this.productService.handleQuantity(product)){
+    //   console.log(this.productService.handleQuantity(product));
+    //   this.productService.localAddToCart(product);
+      
+    // }
+  }
+}
+
+interface productData{
+  id:number,
+  sku: string,
+  quantity: number,
+      
+
 }

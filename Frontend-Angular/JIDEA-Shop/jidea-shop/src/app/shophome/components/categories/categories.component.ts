@@ -27,7 +27,8 @@ export class CategoriesComponent implements OnInit{
   }
   selectCategory(category:Category)
   {
+    console.log(category.id);
     this.selectedCategory = category.id;
-    this.route.navigateByUrl(`shop/category/${category.id}`)
+    this.route.navigateByUrl(`shop/category/${this.selectedCategory}`);
   }
 }
