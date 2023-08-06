@@ -3,7 +3,7 @@ Ecommerce Website with Angular using angular material library. and Springboot ba
 
 Author: 
 Evan (Lastname)
-Javier (Lastname)
+Javier Oliva
 Duc Ho
 
 npm install:
