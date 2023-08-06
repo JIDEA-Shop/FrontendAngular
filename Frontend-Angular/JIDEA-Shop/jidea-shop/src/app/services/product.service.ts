@@ -34,9 +34,6 @@ export class ProductService {
    * @param page
    * @returns
    */
-  getProducts(page: number, pageSize: number, category_id: number): Observable<GetProductResponse> {
-
-  constructor(private http: HttpClient) { }
 /**
  * return a list of products,
  * getProducts return all Products with Page and defail category of 1

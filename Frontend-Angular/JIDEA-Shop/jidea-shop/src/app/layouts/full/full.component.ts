@@ -43,6 +43,11 @@ export class FullComponent implements OnInit{
       menu: "Dashboard",
     },
     {
+      link: "/marketing",
+      icon: "home",
+      menu: "Marketing",
+    },
+    {
       link:"/shop",
       icon:"home",
       menu:"SHOP HOME"
