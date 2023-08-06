@@ -1,0 +1,42 @@
+<p>marketing works!</p>
+
+
+<p> IT WORKS!! Does</p>
+
+
+<button type="submit"   (click)="run()"    >Read Marketing Table</button>
+
+<button type="submit"   (click)="addwish()"    >Add Wish</button>
+
+
+<button type="submit"   (click)="clearAllWishes()"    >Clear Wishlist</button>
+
+
+<li *ngFor="let x of cart">
+
+    <th>  {{x.cost}} {{x.sku}} {{x.n}}  </th>
+
+</li>
+
+
+<p>WISHLIST</p>
+
+<li *ngFor="let x of this.wishlist">
+
+    <th> {{x.cost}} {{x.sku}}  </th>
+
+</li>
+
+
+
+
+
+
+<li *ngFor="let x of catalog">
+
+    <img [src]="x.imageURL"  width="200"  height="200">
+
+    <th>{{x.price}} {{x.sku}} {{x.description}}</th>
+
+</li>
+

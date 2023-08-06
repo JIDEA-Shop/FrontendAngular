@@ -12,9 +12,11 @@ import { OrderReportPageComponent } from './order-report-page/order-report-page.
 import { OktaAuthGuard, OktaCallbackComponent } from '@okta/okta-angular'
 import { CardDetailComponent } from './shophome/components/card-detail/card-detail.component';
 import { ManagementComponent } from './management/management.component';
+import {MarketingComponent} from "./marketing/marketing.component";
 import { LoginOktaComponent } from './components/login-okta/login-okta.component';
 import { OktaAuth } from '@okta/okta-auth-js';
 import { UserProfileComponent } from './management/components/user-profile/user-profile.component';
+
 
 function sendToLoggin(oktaAuth:OktaAuth,injector: Injector){
   const router = injector.get(Router);
@@ -57,6 +59,7 @@ const routes: Routes = [
   {path:"signin", component:SigninPageComponent},
   {path:"orderDetails", component:OrderItemsDetailsComponent},
   {path:"report", component:OrderReportPageComponent},
+  {path:"marketing", component:MarketingComponent},
   {path:"cart", component:CartPageComponent,
     canActivate: [OktaAuthGuard], data: {onAuthRequired: sendToLoggin} },
   {path:"", redirectTo:"", pathMatch:"full"},

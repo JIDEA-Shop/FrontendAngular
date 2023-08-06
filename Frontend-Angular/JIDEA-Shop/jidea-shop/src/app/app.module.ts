@@ -27,6 +27,13 @@ import { ShophomeModule } from './shophome/shophome.module';
 import { OrderItemsDetailsComponent } from './order-items-details/order-items-details.component';
 import { OrderReportPageComponent } from './order-report-page/order-report-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { ManagementComponent } from './management/management.component';
+import { MarketingComponent } from './marketing/marketing.component';
+import {ImplMarketingService} from "./services/impl-marketing.service";
+import {MarketinghttpService} from "./services/marketinghttp.service";
+import {ShoppinghttpService} from "./services/shoppinghttp.service";
+import {ImplShoppingService} from "./services/impl-shopping.service";
 import {
   OktaAuthModule,
   OKTA_CONFIG 
@@ -38,6 +45,7 @@ const oktaConfig = myAppConfig.oidc;
 const oktaAuth = new OktaAuth(oktaConfig);
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,8 +55,10 @@ const oktaAuth = new OktaAuth(oktaConfig);
     SigninFormComponent,
     SigninPageComponent,
     CartPageComponent,
+      MarketingComponent,
     OrderItemsDetailsComponent,
     OrderReportPageComponent,
+
 
   ],
   imports: [
@@ -65,12 +75,20 @@ const oktaAuth = new OktaAuth(oktaConfig);
     HttpClientModule,
     MatTableModule,
     NgbModule,
-
     OktaAuthModule,
     ManagementModule
 
   ],
+
+  providers: [
+    ImplMarketingService,
+    MarketinghttpService,
+    ShoppinghttpService,
+    ImplShoppingService,
+  ],
+
   providers: [ProductService,{ provide: OKTA_CONFIG, useValue: { oktaAuth }}],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
