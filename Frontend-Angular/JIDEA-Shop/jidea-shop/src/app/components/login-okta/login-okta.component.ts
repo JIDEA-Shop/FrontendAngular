@@ -33,6 +33,9 @@ export class LoginOktaComponent implements OnInit{
           'password.forgot.email.or.username.tooltip': 'Email',
           'errors.E0000095': 'Unable to reset password.  Did you put in a valid email?'
         }
+      },
+      features: {
+        registration: true,
       }
     });
   }

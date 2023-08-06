@@ -13,11 +13,13 @@ import { DemoFlexyModule } from './demo-flexy-module'
 // Modules
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ComponentsModule } from './components/components.module';
+import { UserProfileComponent } from './management/components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FullComponent
+    FullComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

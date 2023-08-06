@@ -1,7 +1,3 @@
-<mat-card>
-  <mat-card-content>
-    <mat-card-title>
-      <mat-icon>store</mat-icon>
 <!--Promo-->
 <mat-accordion>
   <mat-expansion-panel [expanded]="true">
@@ -34,8 +30,15 @@
         </div>
   </mat-expansion-panel>
 </mat-accordion>
+
+<!-- Shop UI-->
+<mat-card>
+  <mat-card-content>
+    <mat-card-title>
+      <mat-icon>store</mat-icon>
+      <app-categories></app-categories>
  <!--Routing Content-->
     </mat-card-title>
-    <router-outlet></router-outlet>
+    <!-- <router-outlet></router-outlet> -->
   </mat-card-content>
 </mat-card>
