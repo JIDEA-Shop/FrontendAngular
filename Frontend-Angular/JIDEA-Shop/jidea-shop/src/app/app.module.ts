@@ -29,6 +29,7 @@ import { OrderReportPageComponent } from './order-report-page/order-report-page.
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SigninPageComponent,
     CartPageComponent,
     OrderItemsDetailsComponent,
-    OrderReportPageComponent 
+    OrderReportPageComponent,
 
   ],
   imports: [
@@ -55,7 +56,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FontAwesomeModule,
     HttpClientModule,
     MatTableModule,
-    NgbModule
+    NgbModule,
 
   ],
   providers: [],

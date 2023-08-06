@@ -1,50 +1,157 @@
-<div class="d-flex p-5">
-<mat-card class="mt-5 w-75 h-100">
+<!-- <div class="row p-5"> -->
+    <div class="row ms-5">
+        <div class="col-md-9 mb-4">
+          <div class="card mb-4">
+            <div class="card-header py-3">
+              <div class="row">
+               <h5 class="col-2 mb-0">Deliver to:</h5>
+               <div class="col-10 h5 text-primary">{{fullAddress}}</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <form #addressForm="ngForm"(ngSubmit)="onSubmit()" class="form-group">
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form7Example4">Street Address</label>
+                  <input type="text" id="form7Example4" class="form-control" [(ngModel)]="address.street" name="street" placeholder="Enter Street Address" />
+                </div>
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form7Example4">City</label>
+                    <input type="text" id="form7Example4" class="form-control" [(ngModel)]="address.city" name="city" placeholder="Enter City" />
+                </div>
+                <div class="mb-2">
+                    <label for="state" class=" control-label">State</label>
+                    <div class=>
+                        <select class="form-control form-control" id="state" name="state" [(ngModel)]="address.state" >
+                            <option value="">N/A</option>
+                            <option value="AK">Alaska</option>
+                            <option value="AL">Alabama</option>
+                            <option value="AR">Arkansas</option>
+                            <option value="AZ">Arizona</option>
+                            <option value="CA">California</option>
+                            <option value="CO">Colorado</option>
+                            <option value="CT">Connecticut</option>
+                            <option value="DC">District of Columbia</option>
+                            <option value="DE">Delaware</option>
+                            <option value="FL">Florida</option>
+                            <option value="GA">Georgia</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="IA">Iowa</option>
+                            <option value="ID">Idaho</option>
+                            <option value="IL">Illinois</option>
+                            <option value="IN">Indiana</option>
+                            <option value="KS">Kansas</option>
+                            <option value="KY">Kentucky</option>
+                            <option value="LA">Louisiana</option>
+                            <option value="MA">Massachusetts</option>
+                            <option value="MD">Maryland</option>
+                            <option value="ME">Maine</option>
+                            <option value="MI">Michigan</option>
+                            <option value="MN">Minnesota</option>
+                            <option value="MO">Missouri</option>
+                            <option value="MS">Mississippi</option>
+                            <option value="MT">Montana</option>
+                            <option value="NC">North Carolina</option>
+                            <option value="ND">North Dakota</option>
+                            <option value="NE">Nebraska</option>
+                            <option value="NH">New Hampshire</option>
+                            <option value="NJ">New Jersey</option>
+                            <option value="NM">New Mexico</option>
+                            <option value="NV">Nevada</option>
+                            <option value="NY">New York</option>
+                            <option value="OH">Ohio</option>
+                            <option value="OK">Oklahoma</option>
+                            <option value="OR">Oregon</option>
+                            <option value="PA">Pennsylvania</option>
+                            <option value="PR">Puerto Rico</option>
+                            <option value="RI">Rhode Island</option>
+                            <option value="SC">South Carolina</option>
+                            <option value="SD">South Dakota</option>
+                            <option value="TN">Tennessee</option>
+                            <option value="TX">Texas</option>
+                            <option value="UT">Utah</option>
+                            <option value="VA">Virginia</option>
+                            <option value="VT">Vermont</option>
+                            <option value="WA">Washington</option>
+                            <option value="WI">Wisconsin</option>
+                            <option value="WV">West Virginia</option>
+                            <option value="WY">Wyoming</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Address</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <mat-card class="p-4 ">
+                <mat-card-header>
+                    <mat-card-title>Review Order</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                   <div class="d-flex justify-content-between"> <mat-card-subtitle>Subtotal:</mat-card-subtitle><p class="float-left">&nbsp;${{ getSubtotal()| number:'1.2-2'}}</p></div>
+                   <div class="d-flex justify-content-between"> <mat-card-subtitle>Discount: </mat-card-subtitle><p>&nbsp;-${{ passDiscount()}}</p></div>
+                   <div class="d-flex justify-content-between"> <mat-card-subtitle>Delivery: </mat-card-subtitle><p>&nbsp;${{ delivery}}</p></div>
+                   <div class="d-flex justify-content-between"> <mat-card-subtitle><strong>Total:</strong></mat-card-subtitle><p>&nbsp;${{getTotal()| number:'1.2-2'}}</p></div>
+                </mat-card-content>
+            
+                <button mat-raised-button class="w-75 me-auto ms-auto" color="primary" (click)="placeOrder()">Checkout</button>
+                
+            
+            </mat-card>
+      </div>
+    </div>
+<div class="col-md-10">
+    
+    <!-- Alert for Checkout -->
+    <div *ngIf="alertPlaceOrder" class="alert alert-danger ms-auto me-auto mt-auto w-80" role="alert">
+        <i-feather name="alert-circle" class="text-danger me-3"></i-feather>
+        Cart empty or missing/incomplete address!
+    </div>
+
+<mat-card >
     <mat-card-content>
-    <table mat-table [dataSource]="cartDetails" class="mat-elevation-z8">
+    <table mat-table [dataSource]="cartItems" class="mat-elevation-z8">
 
         <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
     
         <!-- Name Column -->
-        <ng-container matColumnDef="User ID">
-        <th mat-header-cell *matHeaderCellDef> User ID </th>
-        <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
+        <ng-container matColumnDef="Image">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element"> {{element.imageURL}} </td>
         </ng-container>
     
         <!-- Weight Column -->
-        <ng-container matColumnDef="Address">
-        <th mat-header-cell *matHeaderCellDef> Address </th>
-        <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+        <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
         </ng-container>
     
      
 
-        <ng-container matColumnDef="Total">
-            <th mat-header-cell *matHeaderCellDef> Total Price </th>
-            <td mat-cell *matCellDef="let element"> ${{element.totalPrice}} </td>
+        <ng-container matColumnDef="Price">
+            <th mat-header-cell *matHeaderCellDef> Price </th>
+            <td mat-cell *matCellDef="let element"> ${{(element.price/element.quantity)| number:'1.2-2'}} </td>
         </ng-container>
         
-        <ng-container matColumnDef="Date">
-            <th mat-header-cell *matHeaderCellDef> Date </th>
-            <td mat-cell *matCellDef="let element"> {{element.date}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="Time">
-            <th mat-header-cell *matHeaderCellDef> Time </th>
-            <td mat-cell *matCellDef="let element"> {{element.time}} </td>
-        </ng-container>
-
         <ng-container matColumnDef="Buttons">
-            <th mat-header-cell *matHeaderCellDef> </th>
+            <th mat-header-cell *matHeaderCellDef> Quantity </th>
             <td mat-cell *matCellDef="let element"> 
             
-                <button mat-mini-fab color="warn" (click)="decreaseCount()">-</button>
-                <span class="ms-3 me-3 h6">{{itemCount}}</span>
-                <button mat-mini-fab  color="primary" (click)="increaseCount()">+</button>
+                <button mat-mini-fab color="warn" (click)="decreaseCount(element)">-</button>
+                <span class="ms-3 me-3 h6">{{element.quantity}}</span>
+                <button mat-mini-fab  color="primary"  (click)="increaseCount(element)">+</button>
             
             </td>
         </ng-container>
+
+        <ng-container matColumnDef="Total">
+            <th mat-header-cell *matHeaderCellDef> Total </th>
+            <td mat-cell *matCellDef="let element">${{element.price| number:'1.2-2'}} </td>
+        </ng-container>
+
+        
        
         
     
@@ -54,21 +161,48 @@
     </mat-card-content>
     
 </mat-card>
-<mat-card class="p-4 w-40  ms-auto">
+</div>
+<!-- <div class="col-md-3 mb-4"> -->
+<!-- <mat-card class="p-4 ">
     <mat-card-header>
         <mat-card-title>Review Order</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-       <div class="d-flex"> <mat-card-subtitle class="float-left">Subtotal:</mat-card-subtitle><p class="float-left">&nbsp;$100</p></div>
-       <div class="d-flex"> <mat-card-subtitle>Discount: </mat-card-subtitle><p>&nbsp;$100</p></div>
-       <div class="d-flex"> <mat-card-subtitle>Delivery: </mat-card-subtitle><p>&nbsp;$100</p></div>
-       <div class="d-flex"> <mat-card-subtitle><strong>Total:</strong></mat-card-subtitle><p>&nbsp;$300</p></div>
+       <div class="d-flex justify-content-between"> <mat-card-subtitle>Subtotal:</mat-card-subtitle><p class="float-left">&nbsp;${{ getSubtotal()| number:'1.2-2'}}</p></div>
+       <div class="d-flex justify-content-between"> <mat-card-subtitle>Discount: </mat-card-subtitle><p>&nbsp;-${{ passDiscount()}}</p></div>
+       <div class="d-flex justify-content-between"> <mat-card-subtitle>Delivery: </mat-card-subtitle><p>&nbsp;${{ delivery}}</p></div>
+       <div class="d-flex justify-content-between"> <mat-card-subtitle><strong>Total:</strong></mat-card-subtitle><p>&nbsp;${{getTotal()| number:'1.2-2'}}</p></div>
     </mat-card-content>
 
     <button mat-raised-button class="w-75 me-auto ms-auto" color="primary">Checkout</button>
     
 
-</mat-card>
+</mat-card> -->
+<!-- </div> -->
+<!-- </div> -->
+
+<div *ngIf="maxQuanity" class="alert alert-warning ms-auto me-auto mt-auto w-75" role="alert">
+    <i-feather name="alert-triangle" class="text-warning me-3"></i-feather>
+    Max amount reached!
 </div>
 
+<!-- <div class="row ms-5">
+    <div class="col-md-6 mb-4">
+      <div class="card mb-4">
+        <div class="card-header py-3">
+          <h5 class="mb-0">Deliver to:</h5>
+          <div class="h6 text-primary">sdgn</div>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="form-outline mb-4">
+              <input type="text" id="form7Example4" class="form-control" />
+              <label class="form-label" for="form7Example4">Address</label>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   
+    
+  </div> -->

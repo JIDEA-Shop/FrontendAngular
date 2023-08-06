@@ -27,6 +27,7 @@ export class CardComponent implements OnInit {
   pageSizeOptions = [4, 8, 12,16];
   pageEvent: PageEvent = new PageEvent();
 
+
   alert:alert = {
     border: "alert-border-danger",
     background: "alert-danger",
@@ -94,4 +95,24 @@ export class CardComponent implements OnInit {
       console.log("Event undefined")
     }
   }
+  
+  
+  addToCart(productId:number){
+    console.warn(productId);
+    let product = this.cards.filter(x => (x.id == productId))[0];
+    console.log(product);
+    
+    if(this.productService.handleQuantity(product)){
+      console.log(this.productService.handleQuantity(product));
+      this.productService.localAddToCart(product);
+      
+    }
+  }
+}
+
+interface productData{
+  id:number,
+  sku: string,
+  quantity: number,
+      
 }

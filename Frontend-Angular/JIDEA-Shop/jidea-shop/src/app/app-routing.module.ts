@@ -49,6 +49,7 @@ const routes: Routes = [
       },
       { path: "product-detail/:id",component:CardDetailComponent},
       {path:"home", component:DashboardComponent},
+      {path:"cart", component:CartPageComponent},
     ]
   },
   {path:"signup", component:SignupPageComponent},

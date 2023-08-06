@@ -25,7 +25,7 @@
             <p class="op-7">
               {{card.unit_price}}
             </p>
-            <button mat-flat-button color="accent" class="fw-normal mt-4">Add To Cart</button>
+            <button mat-flat-button color="accent" class="fw-normal mt-4" (click)="addToCart(card.id)">Add To Cart</button>
           </div>
         </mat-card-content>
       </mat-card>
