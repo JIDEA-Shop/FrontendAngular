@@ -37,6 +37,10 @@ const routes: Routes = [
           { path: "", component:CardComponent},
         ]
       },
+
+   
+      {path:"cart", component:CartPageComponent},
+
       { path:"manage",component:ManagementComponent, 
           canActivate: [OktaAuthGuard], data: {onAuthRequired: sendToLoggin} },
       { path:"product-detail/:id",component:CardDetailComponent},
@@ -44,6 +48,7 @@ const routes: Routes = [
           canActivate: [OktaAuthGuard], data: {onAuthRequired: sendToLoggin} },
       { path:"user-profile",component:UserProfileComponent,
           canActivate: [OktaAuthGuard], data: { onAuthRequired: sendToLoggin } },
+
     ]
   },
   {path:"login/callback",component: OktaCallbackComponent},

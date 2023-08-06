@@ -37,6 +37,7 @@ import { ManagementModule } from './management/management.module';
 const oktaConfig = myAppConfig.oidc;
 const oktaAuth = new OktaAuth(oktaConfig);
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,7 @@ const oktaAuth = new OktaAuth(oktaConfig);
     CartPageComponent,
     OrderItemsDetailsComponent,
     OrderReportPageComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -63,8 +65,10 @@ const oktaAuth = new OktaAuth(oktaConfig);
     HttpClientModule,
     MatTableModule,
     NgbModule,
+
     OktaAuthModule,
     ManagementModule
+
   ],
   providers: [ProductService,{ provide: OKTA_CONFIG, useValue: { oktaAuth }}],
   bootstrap: [AppComponent]
