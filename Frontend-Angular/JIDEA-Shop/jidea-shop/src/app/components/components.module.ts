@@ -18,7 +18,11 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
 import { SliderComponent } from './slider/slider.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
 import { ButtonsComponent } from './buttons/buttons.component';
-import { TooltipsComponent } from './tooltips/tooltips.component'
+import { TooltipsComponent } from './tooltips/tooltips.component';
+import { LoginOktaComponent } from './login-okta/login-okta.component';
+import { LoginStatusComponent } from './login-status/login-status.component'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 @NgModule({
@@ -41,7 +45,8 @@ import { TooltipsComponent } from './tooltips/tooltips.component'
     AlertsComponent,
     GridListComponent,
     TooltipsComponent,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule,
   ],
   exports: [
     AlertsComponent,
@@ -58,6 +63,13 @@ import { TooltipsComponent } from './tooltips/tooltips.component'
     SliderComponent,
     SlideToggleComponent,
     ButtonsComponent,
+    LoginOktaComponent,
+    LoginStatusComponent,
+  ],
+  declarations: [
+    LoginOktaComponent,
+    LoginStatusComponent,
+    CheckoutComponent
   ]
 })
 export class ComponentsModule { }

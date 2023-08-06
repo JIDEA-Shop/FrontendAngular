@@ -1,54 +1,12 @@
-<!-- ToolBar-->
-<mat-toolbar>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span><h6>SHOP FOR HOME</h6></span>
-    <span class="example-spacer"></span>
-  </mat-toolbar>
-
-
-<!--Promo-->
-<mat-accordion>
-  <mat-expansion-panel [expanded]="true">
-    <mat-expansion-panel-header>
-      <mat-panel-title> <h3>Events</h3> </mat-panel-title>
-      <mat-panel-description> Event Description </mat-panel-description>
-    </mat-expansion-panel-header>
-        <!-- Tabs -->
-        <div class="row">
-          <!-- Card column -->
-          <div class="col-12">
-
-                <mat-tab-group mat-stretch-tabs="false">
-                  <mat-tab label="Promotions">
-                    <mat-card-content>
-                      <app-promotion-banner></app-promotion-banner>
-                      </mat-card-content>
-                  </mat-tab>
-                  <mat-tab label="Recommended For You">
-                    <mat-card-content>
-                      <app-shop-product></app-shop-product>
-                  </mat-card-content>
-                  </mat-tab>
-                  <mat-tab label="Popular Products">
-                      <mat-card-content>
-                        <app-shop-card></app-shop-card>
-                    </mat-card-content>
-                    </mat-tab>
-                </mat-tab-group>
-
-          </div>
-        </div>
-  </mat-expansion-panel>
-</mat-accordion>
-<!--Routing Content-->
+<app-promotion-banner></app-promotion-banner>
+<!-- Shop UI-->
 <mat-card>
   <mat-card-content>
     <mat-card-title>
       <mat-icon>store</mat-icon>
-      <!-- Add Sorting here-->
+      <app-categories></app-categories>
+ <!--Routing Content-->
     </mat-card-title>
-    <router-outlet></router-outlet>
+    <!-- <router-outlet></router-outlet> -->
   </mat-card-content>
 </mat-card>

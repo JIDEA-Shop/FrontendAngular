@@ -1,0 +1,11 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <input matInput formControlName="name" placeholder="Name">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <input matInput formControlName="email" placeholder="Email">
+    </mat-form-field>
+    <!-- Add other fields from UserClaims here -->
+  
+    <button mat-button type="submit">Update Profile</button>
+  </form>

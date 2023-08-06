@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import ShophomeComponent from './shophome.component';
+import { LoginOktaComponent } from './login-okta.component';
 
-describe('ShophomeComponent', () => {
-  let component: ShophomeComponent;
-  let fixture: ComponentFixture<ShophomeComponent>;
+describe('LoginOktaComponent', () => {
+  let component: LoginOktaComponent;
+  let fixture: ComponentFixture<LoginOktaComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ShophomeComponent]
+      declarations: [LoginOktaComponent]
     });
-    fixture = TestBed.createComponent(ShophomeComponent);
+    fixture = TestBed.createComponent(LoginOktaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
