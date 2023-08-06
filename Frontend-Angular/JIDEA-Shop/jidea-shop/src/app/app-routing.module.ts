@@ -30,6 +30,7 @@ import { OrderReportPageComponent } from './order-report-page/order-report-page.
 
 import { CardDetailComponent } from './shophome/components/card-detail/card-detail.component';
 import { ManagementComponent } from './management/management.component';
+import {MarketingComponent} from "./marketing/marketing.component";
 
 
 
@@ -57,7 +58,10 @@ const routes: Routes = [
   {path:"signin", component:SigninPageComponent},
   {path:"orderDetails", component:OrderItemsDetailsComponent},
   {path:"report", component:OrderReportPageComponent},
-  {path:"cart", component:CartPageComponent},
+    // Here we are going to remove Cart Page to test Marketing
+  //{path:"cart", component:CartPageComponent},
+  {path:"cart", component:MarketingComponent},
+
   {path:"", redirectTo:"", pathMatch:"full"},
   {path:"**", redirectTo: "",pathMatch: "full"}
 ];

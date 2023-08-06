@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { Router } from '@angular/router';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-forms',
@@ -14,12 +15,15 @@ import { Router } from '@angular/router';
   templateUrl: './forms.component.html',
 })
 export class FormsComponent implements OnInit {
-  
+
   checked = true;
-  
+
   constructor(private _router: Router,) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    Observable
+
+  }
 
   onBack(): void {
     this._router.navigate(['/flexy/home']);

@@ -28,6 +28,7 @@ import { OrderItemsDetailsComponent } from './order-items-details/order-items-de
 import { OrderReportPageComponent } from './order-report-page/order-report-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ManagementComponent } from './management/management.component';
+import { MarketingComponent } from './marketing/marketing.component';
 
 
 @NgModule({
@@ -39,9 +40,11 @@ import { ManagementComponent } from './management/management.component';
     SigninFormComponent,
     SigninPageComponent,
     CartPageComponent,
+      MarketingComponent,
     OrderItemsDetailsComponent,
     OrderReportPageComponent,
-    ManagementComponent 
+    ManagementComponent
+
 
   ],
   imports: [

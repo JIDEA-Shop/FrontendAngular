@@ -1,0 +1,24 @@
+This folder contains a couple Microservices.
+
+Services have the following Convention:
+
+XService , Xhttp , and implX.
+
+To use a Service, please inject implX into the respective component's constructor.
+
+EX: constructor(marketingservice : impl-marketing) gives marketing information
+
+From there, you have to pull data from the service. This can be achieved in the
+constructor as well and is stored in the service's collection. Each Service
+contains a collection field which stores information. From here, you can build
+a local collection to the field and implement any methods you prefer.
+
+
+Ex:
+
+constructor(marketingservice : impl-marketing) {
+
+  // The assumption is that the Service is Running and has array.
+    marketingservice.DisplayCatalog().subscribe()
+
+}

@@ -8,6 +8,7 @@ import { ProductComponent } from './dashboard-components/product/product.compone
 import { CardsComponent } from './dashboard-components/cards/cards.component';
 import { FormsModule } from '@angular/forms';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import {MarketingComponent} from "../marketing/marketing.component";
 
 
 
@@ -18,13 +19,14 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     SalesComponent,
     ActivityComponent,
     ProductComponent,
-    CardsComponent,
+    CardsComponent
   ],
   imports: [
     CommonModule,
     DemoFlexyModule,
     FormsModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+
   ],
   exports: [
     DashboardComponent,
