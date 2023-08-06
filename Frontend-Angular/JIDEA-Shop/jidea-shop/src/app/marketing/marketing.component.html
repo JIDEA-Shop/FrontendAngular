@@ -6,6 +6,11 @@
 
 <button type="submit"   (click)="run()"    >Read Marketing Table</button>
 
+<button type="submit"   (click)="addwish()"    >Add Wish</button>
+
+
+<button type="submit"   (click)="clearAllWishes()"    >Clear Wishlist</button>
+
 
 <li *ngFor="let x of cart">
 
@@ -16,9 +21,9 @@
 
 <p>WISHLIST</p>
 
-<li *ngFor="let x of wishlist">
+<li *ngFor="let x of this.wishlist">
 
-    <th> {{x.sku}}  </th>
+    <th> {{x.cost}} {{x.sku}}  </th>
 
 </li>
 
