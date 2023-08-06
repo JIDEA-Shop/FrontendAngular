@@ -29,6 +29,10 @@ import { OrderReportPageComponent } from './order-report-page/order-report-page.
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ManagementComponent } from './management/management.component';
 import { MarketingComponent } from './marketing/marketing.component';
+import {ImplMarketingService} from "./services/impl-marketing.service";
+import {MarketinghttpService} from "./services/marketinghttp.service";
+import {ShoppinghttpService} from "./services/shoppinghttp.service";
+import {ImplShoppingService} from "./services/impl-shopping.service";
 
 
 @NgModule({
@@ -63,7 +67,17 @@ import { MarketingComponent } from './marketing/marketing.component';
     NgbModule
 
   ],
-  providers: [],
+  providers: [
+
+    ImplMarketingService,
+    MarketinghttpService,
+    ShoppinghttpService,
+    ImplShoppingService,
+
+
+
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

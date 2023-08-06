@@ -13,6 +13,9 @@ import {WishService} from "../wish-service";
 export class ImplShoppingService implements ShoppingService , WishService{
 
 
+  product : ShoppingProduct = new ShoppingProduct( "" , 0 , 0)
+  wish : ShoppingWish = new ShoppingWish("" , 0);
+
   basket : ShoppingProduct[] = []
   wishlist : ShoppingWish[] = []
 
@@ -99,9 +102,32 @@ export class ImplShoppingService implements ShoppingService , WishService{
 
   showall(): Observable<Object> {
 
-    let array = from(this.basket);
+    console.log("Starting Show all")
+    this.shoppingclient.showall().subscribe( data => {
+
+
+      Object.values(data).forEach(  product =>   {
+
+
+        this.product = product as ShoppingProduct
+        console.log(this.product.cost)
+        this.basket.push(this.product)
+
+
+      })
+
+
+
+    } )
+
+
+    let array = from(this.basket)
+
 
     return array;
+
+
+
   }
 
   getEntireWishlist(): Observable<Object> {
