@@ -52,7 +52,8 @@ const routes: Routes = [
   {path:"signin", component:SigninPageComponent},
   {path:"orderDetails", component:OrderItemsDetailsComponent},
   {path:"report", component:OrderReportPageComponent},
-  {path:"cart", component:CartPageComponent},
+  {path:"cart", component:CartPageComponent,
+    canActivate: [OktaAuthGuard], data: {onAuthRequired: sendToLoggin} },
   {path:"", redirectTo:"", pathMatch:"full"},
   {path:"**", redirectTo: "",pathMatch: "full"}
 ];

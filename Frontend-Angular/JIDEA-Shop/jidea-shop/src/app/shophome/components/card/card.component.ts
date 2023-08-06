@@ -1,6 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/common/classes/product';
 import { ProductService } from 'src/app/services/product.service';
 interface alert {
@@ -35,7 +35,7 @@ export class CardComponent implements OnInit {
     iconColor: "text-danger",
     message: "No product Found!!!!",
   }
-  constructor(private productService:ProductService,private route: ActivatedRoute) { }
+  constructor(private productService:ProductService,private route: ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => 
@@ -94,5 +94,9 @@ export class CardComponent implements OnInit {
     else{
       console.log("Event undefined")
     }
+  }
+  goToCart()
+  {
+    this.router.navigate(['cart']);
   }
 }
