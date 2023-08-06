@@ -44,4 +44,8 @@ export class LoginStatusComponent implements OnInit {
   goToCart(){
     this.router.navigateByUrl('/cart');
   }
+  goToProfile()
+  {
+    this.router.navigate(['/user-profile']);
+  }
 }

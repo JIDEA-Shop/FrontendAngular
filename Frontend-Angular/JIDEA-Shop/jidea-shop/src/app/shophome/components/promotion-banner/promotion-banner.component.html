@@ -1,17 +1,40 @@
+<!--Promo-->
+<mat-accordion>
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title> <h3>Events</h3> </mat-panel-title>
+      <mat-panel-description> Event Description </mat-panel-description>
+    </mat-expansion-panel-header>
+        <!-- Tabs -->
+        <div class="row">
+          <!-- Card column -->
+          <div class="col-12">
+                <mat-tab-group mat-stretch-tabs="false">
+                  <mat-tab label="Promotions">
+                    <mat-card-content>
+                      <h4 class="mb-32">Promotion Events</h4>
+                      <mat-grid-list cols="10" rowHeight="300px">
+                        <mat-grid-tile *ngFor="let tile of tiles" [colspan]="2" [rowspan]="1">
+                          <img class = "img-contain" src="" alt="">
+                        </mat-grid-tile>
+                      </mat-grid-list>
+                    </mat-card-content>
+                  </mat-tab>
+                  <mat-tab label="Recommended For You">
+                    <mat-card-content>
+                      <app-shop-product></app-shop-product>
+                  </mat-card-content>
+                  </mat-tab>
+                  <mat-tab label="Popular Products">
+                      <mat-card-content>
+                        Promotions here
+                    </mat-card-content>
+                    </mat-tab>
+                </mat-tab-group>
+          </div>
+        </div>
+  </mat-expansion-panel>
+</mat-accordion>
 <!-- ============================================================== -->
 <!-- Fixed height Card Grid-->
 <!-- ============================================================== -->
-<div class="row">
-    <div class="col-12">
-      <mat-card>
-        <mat-card-content>
-          <h4 class="mb-32">Promotion Events</h4>
-          <mat-grid-list cols="10" rowHeight="300px">
-            <mat-grid-tile *ngFor="let tile of tiles" [colspan]="1" [rowspan]="1">
-              <img class = "img-contain" src="" alt="">
-            </mat-grid-tile>
-          </mat-grid-list>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  </div>

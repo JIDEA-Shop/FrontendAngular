@@ -19,7 +19,6 @@ import { UserProfileComponent } from './management/components/user-profile/user-
   declarations: [
     AppComponent,
     FullComponent,
-    UserProfileComponent
   ],
   imports: [
     BrowserModule,

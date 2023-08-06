@@ -27,13 +27,13 @@ import { ShophomeModule } from './shophome/shophome.module';
 import { OrderItemsDetailsComponent } from './order-items-details/order-items-details.component';
 import { OrderReportPageComponent } from './order-report-page/order-report-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ManagementComponent } from './management/management.component';
 import {
   OktaAuthModule,
   OKTA_CONFIG 
 } from '@okta/okta-angular';
 import { OktaAuth } from '@okta/okta-auth-js';
 import myAppConfig from './config/my-app-config';
+import { ManagementModule } from './management/management.module';
 const oktaConfig = myAppConfig.oidc;
 const oktaAuth = new OktaAuth(oktaConfig);
 
@@ -48,7 +48,6 @@ const oktaAuth = new OktaAuth(oktaConfig);
     CartPageComponent,
     OrderItemsDetailsComponent,
     OrderReportPageComponent,
-    ManagementComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +63,8 @@ const oktaAuth = new OktaAuth(oktaConfig);
     HttpClientModule,
     MatTableModule,
     NgbModule,
-    OktaAuthModule
+    OktaAuthModule,
+    ManagementModule
   ],
   providers: [ProductService,{ provide: OKTA_CONFIG, useValue: { oktaAuth }}],
   bootstrap: [AppComponent]

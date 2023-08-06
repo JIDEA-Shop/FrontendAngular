@@ -12,5 +12,21 @@ export class PromotionBannerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  tiles:Product[] = [];
+  tiles:any[] = [
+    {
+      name:"ABC"
+    },
+    {
+      name:"ABC"
+    },
+    {
+      name:"ABC"
+    },
+    {
+      name:"ABC"
+    },
+    {
+      name:"ABC"
+    },
+  ];
 }

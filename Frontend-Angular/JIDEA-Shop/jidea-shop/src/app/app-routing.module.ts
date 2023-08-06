@@ -3,12 +3,10 @@ import { Router, RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FullComponent } from './layouts/full/full.component';
 import ShophomeComponent from './shophome/shophome.component';
-
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { SigninPageComponent } from './signin-page/signin-page.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { CardComponent } from './shophome/components/card/card.component';
-
 import { OrderItemsDetailsComponent } from './order-items-details/order-items-details.component';
 import { OrderReportPageComponent } from './order-report-page/order-report-page.component';
 import { OktaAuthGuard, OktaCallbackComponent } from '@okta/okta-angular'
@@ -16,6 +14,7 @@ import { CardDetailComponent } from './shophome/components/card-detail/card-deta
 import { ManagementComponent } from './management/management.component';
 import { LoginOktaComponent } from './components/login-okta/login-okta.component';
 import { OktaAuth } from '@okta/okta-auth-js';
+import { UserProfileComponent } from './management/components/user-profile/user-profile.component';
 
 function sendToLoggin(oktaAuth:OktaAuth,injector: Injector){
   const router = injector.get(Router);
@@ -38,12 +37,13 @@ const routes: Routes = [
           { path: "", component:CardComponent},
         ]
       },
-      { path:"manage",component:ManagementComponent, canActivate: [OktaAuthGuard],
-          data: {onAuthRequired: sendToLoggin},
-    },
+      { path:"manage",component:ManagementComponent, 
+          canActivate: [OktaAuthGuard], data: {onAuthRequired: sendToLoggin} },
       { path:"product-detail/:id",component:CardDetailComponent},
-      { path:"home", component:DashboardComponent, canActivate: [OktaAuthGuard],
-      data: {onAuthRequired: sendToLoggin} },
+      { path:"home", component:DashboardComponent, 
+          canActivate: [OktaAuthGuard], data: {onAuthRequired: sendToLoggin} },
+      { path:"user-profile",component:UserProfileComponent,
+          canActivate: [OktaAuthGuard], data: { onAuthRequired: sendToLoggin } },
     ]
   },
   {path:"login/callback",component: OktaCallbackComponent},
