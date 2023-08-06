@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable,map } from 'rxjs';
 import { Product } from '../common/classes/product';
 import { Category } from '../common/classes/category';
-import { Time } from '@angular/common';
 import { OrderItem } from '../common/classes/order-item';
 import { OrderItemProduct } from '../common/classes/order-item-product';
 import { CartItem } from '../common/classes/cart-item';
@@ -48,6 +47,7 @@ export class ProductService {
     return this.http.get<OrderItemProduct[]>(`${this.orderProductListURL}/${orderId}`);
   }
 
+
   saveOrder(orderRequest: OrderRequest):Observable<OrderRequest>{
     console.log("Order placed:" + orderRequest.address);
     
@@ -82,6 +82,7 @@ export class ProductService {
      }
 
   }
+
 }
 
   

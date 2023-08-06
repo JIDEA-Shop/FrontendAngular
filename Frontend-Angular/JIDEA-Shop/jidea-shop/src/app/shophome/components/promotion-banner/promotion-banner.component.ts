@@ -1,13 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-
-interface Product{
- text: String,
- cols:number,
- rows:number,
- color:String,
- image:String,
-
-}
+import { Product } from 'src/app/common/classes/product';
 @Component({
   selector: 'app-promotion-banner',
   templateUrl: './promotion-banner.component.html',
@@ -20,34 +12,21 @@ export class PromotionBannerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  tiles:Product[] = [
+  tiles:any[] = [
     {
-      text: 'One',
-      cols: 3,
-      rows: 1,
-      color: 'lightblue',
-      image: "assets/images/u2.webp",
+      name:"ABC"
     },
     {
-      text: 'Two',
-      cols: 1,
-      rows: 2,
-      color: 'lightgreen',
-      image: "assets/images/u2.webp",
+      name:"ABC"
     },
     {
-      text: 'Three',
-      cols: 1,
-      rows: 1,
-      color: 'lightpink',
-      image: "assets/images/u2.webp",
+      name:"ABC"
     },
     {
-      text: 'Four',
-      cols: 2,
-      rows: 1,
-      color: '#DDBDF1',
-      image: "assets/images/u2.webp",
-    }
+      name:"ABC"
+    },
+    {
+      name:"ABC"
+    },
   ];
 }

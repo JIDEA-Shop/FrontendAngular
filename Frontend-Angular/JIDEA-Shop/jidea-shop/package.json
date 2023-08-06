@@ -26,6 +26,9 @@
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@ng-bootstrap/ng-bootstrap": "^15.1.0",
+    "@okta/okta-angular": "^6.2.0",
+    "@okta/okta-auth-js": "^6.4.0",
+    "@okta/okta-signin-widget": "^6.2.0",
     "@popperjs/core": "^2.11.6",
     "angular-feather": "^6.5.0",
     "apexcharts": "^3.40.0",
@@ -38,7 +41,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.0.1",
-    "@angular/cli": "~16.0.1",
+    "@angular/cli": "^16.1.7",
     "@angular/compiler-cli": "^16.0.0",
     "@angular/localize": "^16.0.4",
     "@types/jasmine": "~4.3.0",

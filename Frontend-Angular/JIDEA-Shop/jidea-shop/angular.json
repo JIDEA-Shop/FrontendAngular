@@ -98,7 +98,8 @@
             ],
             "styles": [
               "src/styles.scss" ,
-              "node_module/bootstrap/scss/bootstrap.scss"
+              "node_module/bootstrap/scss/bootstrap.scss",
+              "node_modules/@okta/okta-signin-widget/dist/sass/okta-sign-in.scss"
             ],
             "scripts": []
           }
