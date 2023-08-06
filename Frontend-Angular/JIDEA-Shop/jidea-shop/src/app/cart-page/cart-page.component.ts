@@ -10,6 +10,8 @@ import { CartItem } from '../common/classes/cart-item';
 import { OrderRequest } from '../common/classes/order-request';
 import { OrderItemDto } from '../common/classes/order-item-dto';
 import { NgForm } from '@angular/forms';
+import { UserClaims, authenticate } from '@okta/okta-auth-js';
+import { OktaAuthStateService } from '@okta/okta-angular';
 
 @Component({
   selector: 'app-cart-page',
@@ -19,8 +21,8 @@ import { NgForm } from '@angular/forms';
 })
 
 export class CartPageComponent  implements OnInit{
-  
-
+  isAuthenticated:boolean = false;
+  userEmail!: any;
   displayedColumns: string[] = ['Image', 'Name', 'Price' , 'Buttons','Total'];
   itemCount = 2;
   productDetails:Product[] = [];
@@ -47,15 +49,24 @@ export class CartPageComponent  implements OnInit{
   constructor(private prodcutService: ProductService, 
               private router: Router, 
               private orderService: OrderService,
-              private cdr: ChangeDetectorRef){
+              private cdr: ChangeDetectorRef,
+              private oktaService: OktaAuthStateService
+              ){
 
   }
 
   ngOnInit(): void {
-    
     this.getProductDetails();
+    this.oktaService.authState$.subscribe(
+      (res => {
+        this.isAuthenticated = res.isAuthenticated!;
+        if(this.isAuthenticated)
+        {
+          this.userEmail = res.idToken!.claims.email;
+        }
+      })
+    )
   }
-
 
 
   private getProductDetails(){
@@ -177,9 +188,14 @@ private getAddress(){
 placeOrder(){
   if(this.fullAddress.length>0 && this.cartItems.length>0){
    //let orderItems = new OrderItem[];
+   let orderRequest:any;
    this.cartToOrder()
-   let orderRequest = new OrderRequest(101, this.fullAddress, this.orderItems);
-   
+   if(this.userEmail != undefined || this.userEmail != null){
+    orderRequest = new OrderRequest(this.userEmail, this.fullAddress, this.orderItems);
+   }else{
+    console.log("No Order, Handle Later");
+   }
+
    this.prodcutService.saveOrder(orderRequest).subscribe(
     (response) =>{
       this.cartItems=[];

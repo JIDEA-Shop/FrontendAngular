@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
+import { OktaAuthStateService } from '@okta/okta-angular';
 import { Product } from 'src/app/common/classes/product';
 import { ProductService } from 'src/app/services/product.service';
 interface alert {
@@ -36,7 +37,7 @@ export class CardComponent implements OnInit {
     iconColor: "text-danger",
     message: "No product Found!!!!",
   }
-  constructor(private productService:ProductService,private route: ActivatedRoute,private router:Router) { }
+  constructor(private productService:ProductService,private route: ActivatedRoute,private router:Router, private oktaService: OktaAuthStateService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => 
@@ -100,15 +101,31 @@ export class CardComponent implements OnInit {
   
   
   addToCart(productId:number){
-    console.warn(productId);
-    let product = this.cards.filter(x => (x.id == productId))[0];
-    console.log(product);
+    this.oktaService.authState$.subscribe((res)=>
+    {
+      if(res.isAuthenticated){
+        console.warn(productId);
+        let product = this.cards.filter(x => (x.id == productId))[0];
+        console.log(product);
+        
+        if(this.productService.handleQuantity(product)){
+          console.log(this.productService.handleQuantity(product));
+          this.productService.localAddToCart(product);
+        }
+      }
+      else{
+        this.router.navigateByUrl(`/login`);
+      }
+    })
+    // console.warn(productId);
+    // let product = this.cards.filter(x => (x.id == productId))[0];
+    // console.log(product);
     
-    if(this.productService.handleQuantity(product)){
-      console.log(this.productService.handleQuantity(product));
-      this.productService.localAddToCart(product);
+    // if(this.productService.handleQuantity(product)){
+    //   console.log(this.productService.handleQuantity(product));
+    //   this.productService.localAddToCart(product);
       
-    }
+    // }
   }
 }
 

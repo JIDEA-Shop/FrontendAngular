@@ -37,6 +37,7 @@ export class LoginStatusComponent implements OnInit {
     }
   }
   logout(){
+    localStorage.removeItem('localCart');
     this.oktaAuth.signOut();
   }
   login()

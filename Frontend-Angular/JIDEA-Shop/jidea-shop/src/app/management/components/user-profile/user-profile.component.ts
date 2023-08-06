@@ -28,7 +28,7 @@ export class UserProfileComponent implements OnInit{
   }
   private initForm() {
     this.profileForm = this.formBuilder.group({
-      name: ['',Validators.required],
+      name: [{value:'', disabled: true}],
       email: [{value:'',disabled: true}],
       // Add other fields from UserClaims here
     });

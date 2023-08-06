@@ -50,7 +50,12 @@ export class FullComponent implements OnInit{
     {
       link:"/manage",
       icon:"layers",
-      menu:"MANAGE PRODUCTS"
+      menu:"Managements"
+    },
+    {
+      link:"/report",
+      icon:"book-open",
+      menu:"Order Reports"
     }
   ]
 

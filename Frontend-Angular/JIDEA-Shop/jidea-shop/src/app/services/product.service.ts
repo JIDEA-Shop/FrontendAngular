@@ -14,8 +14,10 @@ import { OrderRequest } from '../common/classes/order-request';
 export class ProductService {
   // private productURL = `http://34.198.182.156:5000/api/products`;
   // private productCatergoryUrl = `http://34.198.182.156:5000/api/product-category`;
-  private productURL = `http://localhost:9002/api/products`;
-  private productCatergoryUrl = `http://localhost:9002/api/product-category`;
+  // private productURL = `http://localhost:9002/api/products`;
+  // private productCatergoryUrl = `http://localhost:9002/api/product-category`;
+  private productURL = `http://localhost:5000/api/products`;
+  private productCatergoryUrl = `http://localhost:5000/api/product-category`;
   private orderURL = 'http://localhost:9001/api/orders';
   private orderProductListURL = 'http://localhost:9001/api/orders/productList'
 
