@@ -1,7 +1,195 @@
-<p>marketing works!</p>
+
+<!--<div *ngIf="catalog.length == 0"
+     class="alert {{ alert.background }} {{ alert.color }} d-flex fs-14 align-items-center rounded mb-16"
+     role="alert" style="padding: 25px;">
+    <i-feather name="{{ alert.icon }}" class="feather-base me-12"></i-feather>
+    {{ alert.message }}
+</div>-->
+<!-- Cards -->
 
 
-<p> IT WORKS!! Does</p>
+
+
+
+<div>
+
+  <mat-card class="overflow-hidden product-detail-available">
+
+    <mat-card-content>
+
+      <!--
+
+                          <div>
+                              <mat-table [dataSource]="inventoryList" class="mat-elevation-z8">
+
+                                  &lt;!&ndash;- Note that these columns can be defined in any order.
+                                        The actual rendered columns are set as a property on the row definition" &ndash;&gt;
+
+                                  &lt;!&ndash; Position Column &ndash;&gt;
+                                  <ng-container matColumnDef="sku">
+                                      <th mat-header-cell *matHeaderCellDef> SKU </th>
+                                      <td mat-cell *matCellDef="let element"> {{element.sku}} </td>
+                                  </ng-container>
+
+                                  &lt;!&ndash; Name Column &ndash;&gt;
+                                  <ng-container matColumnDef="name">
+                                      <th mat-header-cell *matHeaderCellDef> Name </th>
+                                      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                                  </ng-container>
+
+                                  &lt;!&ndash; Weight Column &ndash;&gt;
+                                  <ng-container matColumnDef="price">
+                                      <th mat-header-cell *matHeaderCellDef> Price </th>
+                                      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+                                  </ng-container>
+
+                                  &lt;!&ndash; Symbol Column &ndash;&gt;
+                                  <ng-container matColumnDef="description">
+                                      <th mat-header-cell *matHeaderCellDef> Description </th>
+                                      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+                                  </ng-container>
+
+                                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                              </mat-table>
+                          </div>
+      -->
+
+
+
+      <div>
+        <tr>
+
+          <td style="padding: 10px" >SKU</td>
+          <td style="padding: 10px">Price</td>
+          <td style="padding: 10px">Name</td>
+        </tr>
+
+
+        <div class="col-lg-3" *ngFor="let item of inventoryList">
+
+
+          <tr>
+
+            <td style="padding: 10px" >{{item.sku}}</td>
+            <td style="padding: 10px">{{item.price}}</td>
+            <td style="padding: 10px">{{item.name}}</td>
+          </tr>
+          <!--      {{item.sku}} {{item.price}} {{item.name}}-->
+
+
+        </div>
+
+
+
+
+
+        <p class="fs-24 lh-lg fw-medium ">
+          <!--<a routerLink="/product-detail/{{card.id}}">
+              {{card.name}}
+          </a>-->
+        </p>
+
+      </div>
+
+
+    </mat-card-content>
+    <button mat-flat-button color="accent" class="fw-normal mt-4"   (click)="clearlist()">ClearList</button>
+
+  </mat-card>
+
+</div>
+
+
+
+
+<div class="row">
+  <div class="col-lg-3" *ngFor="let card of catalog">
+
+    <mat-card class="overflow-hidden product-detail-available p-1">
+      <!--  <div>
+            <a routerLink="/product-detail/{{card.id}}">
+                <img src="{{card.image_url}}" class="w-100">
+            </a>
+        </div>-->
+
+      <div>
+        <img [src]="card.imageURL"   width="600"  height="500" >
+        <!--<img [src]="card.imageURL"  class="w-100,h-100"  width="200"  height="200">-->
+      </div>
+
+
+      <mat-card-content>
+
+
+        <div>
+
+          <p class="fs-24 lh-lg fw-medium ">
+            {{card.name}}
+            <!--<a routerLink="/product-detail/{{card.id}}">
+                {{card.name}}
+            </a>-->
+          </p>
+
+        </div>
+
+        <p class="fs-12 lh-lg fw-medium">
+
+          {{card.description}}
+
+          <!--{{card.cost}} {{card.sku}} {{card.n}}
+-->
+        </p>
+
+
+
+        <div>
+          <br>
+          <p class="op-7">
+
+            <th>Price : {{card.price }} $ </th>
+            <br>
+            <th>SKU :  {{card.sku}} </th>
+            <br>
+            <th>Buyer's Choice : {{card.buyersChoice}}</th>
+
+
+          </p>
+          <button mat-flat-button color="accent" class="fw-normal mt-4" (click)="saveforMarketing(card.sku)">Gather Product Information</button>
+
+
+        </div>
+        <!--  <div>
+              <p class="fs-18 lh-lg fw-medium">
+                  <a routerLink="/product-detail/{{card.id}}">
+                      {{card.name}}
+                  </a>
+              </p>
+              <p class="op-7">
+                  {{card.unit_price}}
+              </p>
+              <button mat-flat-button color="accent" class="fw-normal mt-4">Add To Cart</button>
+          </div>-->
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<!--
+<mat-paginator #paginator
+               (page)="handlePageEvent($event)"
+               [length]="length"
+               [pageSize]="pageSize"
+               [disabled]="false"
+               [showFirstLastButtons]="true"
+               [pageSizeOptions]="true ? pageSizeOptions : []"
+               [hidePageSize]="false"
+               [pageIndex]="page"
+               aria-label="Select page">
+
+</mat-paginator>
+-->
+
+<!--
 
 
 <button type="submit"   (click)="run()"    >Read Marketing Table</button>
@@ -10,6 +198,8 @@
 
 
 <button type="submit"   (click)="clearAllWishes()"    >Clear Wishlist</button>
+-->
+<!--
 
 
 <li *ngFor="let x of cart">
@@ -26,10 +216,12 @@
     <th> {{x.cost}} {{x.sku}}  </th>
 
 </li>
+-->
 
 
 
 
+<!--
 
 
 <li *ngFor="let x of catalog">
@@ -39,4 +231,5 @@
     <th>{{x.price}} {{x.sku}} {{x.description}}</th>
 
 </li>
+-->
 
