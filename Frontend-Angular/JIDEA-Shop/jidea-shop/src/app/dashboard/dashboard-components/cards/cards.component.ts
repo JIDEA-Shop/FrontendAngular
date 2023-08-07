@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 interface cards {
+  name: string,
   image: string;
   btn: string;
 }
@@ -20,14 +21,17 @@ export class CardsComponent implements OnInit {
  */
   cards: cards [] = [
     {
+      name: "Evan Gal Zyncski",
       image: "assets/images/u2.webp",
       btn: "warn",
     },
     {
+      name: "Duc Ho",
       image: "assets/images/u3.webp",
       btn: "primary",
     },
     {
+      name: "Javier Olivia",
       image: "assets/images/u4.webp",
       btn: "accent",
     },

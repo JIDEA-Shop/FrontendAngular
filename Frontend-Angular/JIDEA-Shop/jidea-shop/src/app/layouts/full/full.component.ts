@@ -52,11 +52,11 @@ export class FullComponent implements OnInit{
       icon:"home",
       menu:"SHOP HOME"
     },
-    {
-      link:"/manage",
-      icon:"layers",
-      menu:"Managements"
-    },
+    // {
+    //   link:"/manage",
+    //   icon:"layers",
+    //   menu:"Managements"
+    // },
     {
       link:"/report",
       icon:"book-open",

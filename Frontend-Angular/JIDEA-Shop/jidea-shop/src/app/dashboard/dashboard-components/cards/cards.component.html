@@ -2,15 +2,18 @@
 <div class="row">
   <div class="col-lg-4" *ngFor="let card of cards">
     <mat-card class="overflow-hidden">
-      <div>
-        <img src="{{ card.image }}" class="w-100" alt="">
-      </div>
+      <mat-card-header>
+        <mat-card-title>{{card.name}}</mat-card-title>
+      </mat-card-header>
       <mat-card-content>
         <div>
-          <p class="fs-18 lh-lg fw-medium">
-            Super awesome, Angular 12 is coming soon!
-          </p>
-          <p class="op-7">
+          <div>
+            <img src="{{ card.image }}" class="w-100" alt="" style = "border-radius: 0.5em;">
+          </div>
+          <p class="op-7" style = "margin-top: 20px">
+            Some quick example text to build on the card title and make up the bulk of the card's content.
+            Some quick example text to build on the card title and make up the bulk of the card's content.
+            Some quick example text to build on the card title and make up the bulk of the card's content.
             Some quick example text to build on the card title and make up the bulk of the card's content.
           </p>
           <button mat-flat-button color="{{card.btn}}" class="fw-normal mt-4">Learn More</button>

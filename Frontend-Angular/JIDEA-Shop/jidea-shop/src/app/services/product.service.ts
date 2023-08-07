@@ -48,6 +48,9 @@ export class ProductService {
     return this.http.get<GetProductResponse>(`${this.productURL}/search/findByCategoryId?id=${category_id}&page=${page}&size=${pageSize}`);
   }
 
+  getPromotions(){
+    return this.http.get<GetProductResponse>(`${this.productURL}/search/findOldestUpdatedProducts`);
+  }
   getCategories(): Observable<GetCategoryResponse> {
     return this.http.get<GetCategoryResponse>(`${this.productCatergoryUrl}`);
   }

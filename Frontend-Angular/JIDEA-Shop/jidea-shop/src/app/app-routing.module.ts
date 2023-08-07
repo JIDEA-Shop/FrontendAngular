@@ -50,6 +50,7 @@ const routes: Routes = [
           canActivate: [OktaAuthGuard], data: {onAuthRequired: sendToLoggin} },
       { path:"user-profile",component:UserProfileComponent,
           canActivate: [OktaAuthGuard], data: { onAuthRequired: sendToLoggin } },
+      {path:"marketing", component:MarketingComponent},
 
     ]
   },
@@ -59,7 +60,6 @@ const routes: Routes = [
   {path:"signin", component:SigninPageComponent},
   {path:"orderDetails", component:OrderItemsDetailsComponent},
   {path:"report", component:OrderReportPageComponent},
-  {path:"marketing", component:MarketingComponent},
   {path:"cart", component:CartPageComponent,
     canActivate: [OktaAuthGuard], data: {onAuthRequired: sendToLoggin} },
   {path:"", redirectTo:"", pathMatch:"full"},

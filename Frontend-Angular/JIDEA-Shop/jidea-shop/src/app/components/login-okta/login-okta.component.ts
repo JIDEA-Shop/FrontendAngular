@@ -23,10 +23,10 @@ export class LoginOktaComponent implements OnInit{
         issuer: myAppConfig.oidc.issuer,
         scopes: myAppConfig.oidc.scopes
       },
-      idps: [
-        { type: 'GOOGLE', id: '0oaapcvjm9UIK6YEu5d7' },
-      ],
-      idpDisplay: "SECONDARY",
+      // idps: [
+      //   { type: 'GOOGLE', id: '0oaapcvjm9UIK6YEu5d7' },
+      // ],
+      // idpDisplay: "SECONDARY",
       i18n: {
         en: {
           'password.forgot.email.or.username.placeholder': 'Email',
