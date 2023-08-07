@@ -33,7 +33,7 @@ import {ShoppinghttpService} from "./services/shoppinghttp.service";
 import {ImplShoppingService} from "./services/impl-shopping.service";
 import {
   OktaAuthModule,
-  OKTA_CONFIG 
+  OKTA_CONFIG
 } from '@okta/okta-angular';
 import { OktaAuth } from '@okta/okta-auth-js';
 import myAppConfig from './config/my-app-config';
@@ -77,13 +77,16 @@ const oktaAuth = new OktaAuth(oktaConfig);
 
   ],
 
-  providers: [ProductService,{ provide: OKTA_CONFIG, useValue: { oktaAuth }},
+  providers: [
+    ProductService,
+    { provide: OKTA_CONFIG, useValue: { oktaAuth }},
     ImplMarketingService,
     MarketinghttpService,
     ShoppinghttpService,
     ImplShoppingService,
-  ],
 
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
