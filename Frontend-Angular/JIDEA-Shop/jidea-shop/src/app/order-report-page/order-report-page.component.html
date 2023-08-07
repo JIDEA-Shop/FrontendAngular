@@ -3,25 +3,25 @@
 
         <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
-    
+
         <!-- Position Column -->
         <ng-container matColumnDef="Order Number">
         <th mat-header-cell *matHeaderCellDef> Order Number </th>
         <td mat-cell *matCellDef="let element"> {{element.orderNumber}} </td>
         </ng-container>
-    
+
         <!-- Name Column -->
         <ng-container matColumnDef="User ID">
         <th mat-header-cell *matHeaderCellDef> User Email </th>
         <td mat-cell *matCellDef="let element"> {{element.orderEmail}} </td>
         </ng-container>
-    
+
         <!-- Weight Column -->
         <ng-container matColumnDef="Address">
         <th mat-header-cell *matHeaderCellDef> Address </th>
         <td mat-cell *matCellDef="let element"> {{element.address}} </td>
         </ng-container>
-    
+
         <!-- Symbol Column -->
         <ng-container matColumnDef="Items">
         <th mat-header-cell *matHeaderCellDef> Items </th>
@@ -31,9 +31,9 @@
 
         <ng-container matColumnDef="Total">
             <th mat-header-cell *matHeaderCellDef> Total Price </th>
-            <td mat-cell *matCellDef="let element"> ${{element.totalPrice}} </td>
+            <td mat-cell *matCellDef="let element"> ${{element.totalPrice| number:'1.2-2'}} </td>
         </ng-container>
-        
+
         <ng-container matColumnDef="Date">
             <th mat-header-cell *matHeaderCellDef> Date </th>
             <td mat-cell *matCellDef="let element"> {{element.date}} </td>
@@ -44,14 +44,14 @@
             <td mat-cell *matCellDef="let element"> {{element.time}} </td>
         </ng-container>
 
-       
-        
-    
+
+
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
 </div>
-  
-  
+
+
 

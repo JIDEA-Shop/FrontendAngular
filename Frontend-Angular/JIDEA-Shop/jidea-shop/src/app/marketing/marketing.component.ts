@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {MarketingService} from "../marketing-service";
 import {ImplMarketingService} from "../services/impl-marketing.service";
 import {MarketingProduct} from "../common/classes/marketing-product";
-import {Observable} from "rxjs";
+import {interval, Observable} from "rxjs";
 import {Product} from "../common/classes/product";
 import {ImplShoppingService} from "../services/impl-shopping.service";
 import {ShoppingProduct} from "../common/classes/shopping-product";
@@ -29,11 +29,17 @@ export class MarketingComponent {
   constructor(private marketingservice : ImplMarketingService , private shoppingservice : ImplShoppingService) {
 
 
+    console.log("Pausing")
+    interval(3000)
+    console.log("Pause Done")
+
+
+
     // The assumption is that the Service is Running and has array stuck.
-    marketingservice.DisplayCatalog().subscribe()
+    this.marketingservice.DisplayCatalog().subscribe()
 
     //Pass the data to this component
-    this.catalog = marketingservice.catalog;
+    this.catalog = this.marketingservice.catalog;
 
 
     //Debug
@@ -46,14 +52,22 @@ export class MarketingComponent {
 
 
 
-    shoppingservice.getEntireWishlist().subscribe()
+    this.shoppingservice.getEntireWishlist().subscribe()
 
     console.log("Doing the cart now")
-    shoppingservice.showall().subscribe()
+    this.shoppingservice.showall().subscribe()
 
     //this.cart = shoppingservice.basket
     //this.wishlist = shoppingservice.wishlist
 
+
+    for(let a of this.catalog){
+      console.log(a.name)
+    }
+
+  }
+
+  ngOnInit(): void {
 
 
   }
@@ -77,6 +91,7 @@ export class MarketingComponent {
       if( a.sku == sku){
         console.log("Found!")
         this.inventoryList.push( a )
+        break;
 
 
       }

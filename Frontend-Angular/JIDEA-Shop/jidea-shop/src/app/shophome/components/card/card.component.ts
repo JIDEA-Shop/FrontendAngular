@@ -31,16 +31,16 @@ export class CardComponent implements OnInit {
 
   alert:alert = {
     border: "alert-border-danger",
-    background: "alert-danger",
+    background: "bg-light",
     color: "alert-text-danger",
     icon: "alert-circle",
     iconColor: "text-danger",
-    message: "No product Found!!!!",
+    message: "Please select a category.",
   }
   constructor(private productService:ProductService,private route: ActivatedRoute,private router:Router, private oktaService: OktaAuthStateService) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(() => 
+    this.route.paramMap.subscribe(() =>
     {
       console.log("Card Init");
       this.listProducts()}
@@ -82,7 +82,7 @@ export class CardComponent implements OnInit {
     console.log(`The Current Category Id = ${this.currentCategory}, The Page Number: ${this.page},The Page Size: ${this.pageSize}`)
     this.handlePageEvent(this.pageEvent);
   }
-  
+
   handlePageEvent(event?:PageEvent){
     if(event != undefined)
       this.productService.getProducts(event.pageIndex-1, event.pageSize,this.currentCategory).subscribe(
@@ -98,8 +98,8 @@ export class CardComponent implements OnInit {
     }
   }
 
-  
-  
+
+
   addToCart(productId:number){
     this.oktaService.authState$.subscribe((res)=>
     {
@@ -107,7 +107,7 @@ export class CardComponent implements OnInit {
         console.warn(productId);
         let product = this.cards.filter(x => (x.id == productId))[0];
         console.log(product);
-        
+
         if(this.productService.handleQuantity(product)){
           console.log(this.productService.handleQuantity(product));
           this.productService.localAddToCart(product);
@@ -120,11 +120,11 @@ export class CardComponent implements OnInit {
     // console.warn(productId);
     // let product = this.cards.filter(x => (x.id == productId))[0];
     // console.log(product);
-    
+
     // if(this.productService.handleQuantity(product)){
     //   console.log(this.productService.handleQuantity(product));
     //   this.productService.localAddToCart(product);
-      
+
     // }
   }
 }
@@ -133,6 +133,6 @@ interface productData{
   id:number,
   sku: string,
   quantity: number,
-      
+
 
 }

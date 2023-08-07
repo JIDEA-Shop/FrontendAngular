@@ -50,6 +50,7 @@ export class MarketinghttpService implements MarketingService{
     let endpoint = "/api/marketing/catalog"
 
     this.http.get( this.subdomain + endpoint )
+    console.log("Catalog Retreived")
 
 
   }

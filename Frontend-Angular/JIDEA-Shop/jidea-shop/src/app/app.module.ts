@@ -87,6 +87,6 @@ const oktaAuth = new OktaAuth(oktaConfig);
 
 
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent ,MarketingComponent]
 })
 export class AppModule { }

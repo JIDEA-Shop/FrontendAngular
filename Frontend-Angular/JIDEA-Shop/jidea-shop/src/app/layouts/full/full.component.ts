@@ -21,7 +21,7 @@ export class FullComponent implements OnInit{
   constructor(
     private breakpointObserver: BreakpointObserver,
     private router:Router) { }
-  
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -29,24 +29,20 @@ export class FullComponent implements OnInit{
     );
   ngOnInit(): void {
   }
-  
+
   doSearch(keyword:string){
     this.router.navigateByUrl(`/shop/search/${keyword}`)
   }
 
   routerActive: string = "activelink";
-  
+
   sidebarMenu: sidebarMenu[] = [
-    {
+/*    {
       link: "/home",
       icon: "home",
       menu: "Dashboard",
-    },
-    {
-      link: "/marketing",
-      icon: "home",
-      menu: "Marketing",
-    },
+    },*/
+
     {
       link:"/shop",
       icon:"home",
@@ -61,6 +57,11 @@ export class FullComponent implements OnInit{
       link:"/report",
       icon:"book-open",
       menu:"Order Reports"
+    },
+    {
+      link: "/marketing",
+      icon: "home",
+      menu: "Marketing",
     }
   ]
 

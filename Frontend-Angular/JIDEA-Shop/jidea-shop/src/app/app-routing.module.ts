@@ -40,17 +40,18 @@ const routes: Routes = [
         ]
       },
 
-   
+
       {path:"cart", component:CartPageComponent},
 
-      { path:"manage",component:ManagementComponent, 
+      { path:"manage",component:ManagementComponent,
           canActivate: [OktaAuthGuard], data: {onAuthRequired: sendToLoggin} },
       { path:"product-detail/:id",component:CardDetailComponent},
-      { path:"home", component:DashboardComponent, 
+      { path:"home", component:DashboardComponent,
           canActivate: [OktaAuthGuard], data: {onAuthRequired: sendToLoggin} },
       { path:"user-profile",component:UserProfileComponent,
           canActivate: [OktaAuthGuard], data: { onAuthRequired: sendToLoggin } },
       {path:"marketing", component:MarketingComponent},
+      {path:"report", component:OrderReportPageComponent}
 
     ]
   },
@@ -59,7 +60,7 @@ const routes: Routes = [
   {path:"signup", component:SignupPageComponent},
   {path:"signin", component:SigninPageComponent},
   {path:"orderDetails", component:OrderItemsDetailsComponent},
-  {path:"report", component:OrderReportPageComponent},
+
   {path:"cart", component:CartPageComponent,
     canActivate: [OktaAuthGuard], data: {onAuthRequired: sendToLoggin} },
   {path:"", redirectTo:"", pathMatch:"full"},

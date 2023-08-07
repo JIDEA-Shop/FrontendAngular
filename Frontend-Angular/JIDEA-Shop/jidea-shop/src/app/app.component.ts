@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MarketinghttpService } from './services/marketinghttp.service';
+import {ImplMarketingService} from "./services/impl-marketing.service";
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,9 @@ export class AppComponent implements OnInit{
   title = 'JIDEA SHOP';
   constructor(private marketingService:MarketinghttpService){}
   ngOnInit(): void {
+
+    //console.log("Init root started")
     this.marketingService.DownloadCatalog();
+    //this.marketingService.DownloadCatalog();
   }
 }
